@@ -3,11 +3,11 @@ import couplePhoto from "@/assets/couple-photo.jpg";
 
 const WeddingDetails = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-background leaf-pattern">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Couple Photo */}
-          <div className="flex justify-center mb-12 animate-fade-in">
+          <div className="flex justify-center mb-12 animate-scale-in">
             <div className="relative">
               <div className="absolute -inset-4 border-2 border-gold rounded-full" />
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-cream shadow-2xl">
@@ -36,7 +36,7 @@ const WeddingDetails = () => {
 
           {/* Ceremony Details */}
           <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <div className="bg-emerald p-8 rounded-lg shadow-xl text-center animate-fade-in">
+            <div className="bg-emerald p-8 rounded-lg shadow-xl text-center animate-fade-in-left hover:scale-105 transition-transform">
               <MapPin className="w-12 h-12 text-gold mx-auto mb-4" />
               <h3 className="font-serif text-2xl font-semibold text-gold mb-2">Ceremony</h3>
               <div className="h-px w-16 bg-gold mx-auto mb-4" />
@@ -48,7 +48,7 @@ const WeddingDetails = () => {
               </div>
             </div>
 
-            <div className="bg-emerald p-8 rounded-lg shadow-xl text-center animate-fade-in">
+            <div className="bg-emerald p-8 rounded-lg shadow-xl text-center animate-fade-in-right hover:scale-105 transition-transform">
               <PartyPopper className="w-12 h-12 text-gold mx-auto mb-4" />
               <h3 className="font-serif text-2xl font-semibold text-gold mb-2">Reception</h3>
               <div className="h-px w-16 bg-gold mx-auto mb-4" />

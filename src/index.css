@@ -117,3 +117,17 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Decorative Background Patterns */
+  .floral-pattern {
+    background-image: 
+      radial-gradient(circle at 20% 30%, hsl(var(--gold) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, hsl(var(--emerald) / 0.03) 0%, transparent 50%);
+  }
+
+  .leaf-pattern {
+    background-image: 
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c0 16.569-13.431 30-30 30 16.569 0 30 13.431 30 30 0-16.569 13.431-30 30-30-16.569 0-30-13.431-30-30z' fill='%23d4af37' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+}

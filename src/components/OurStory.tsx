@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 
 const OurStory = () => {
   return (
-    <section className="py-20 bg-cream">
+    <section className="py-20 bg-cream leaf-pattern">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <Heart className="w-10 h-10 text-emerald mx-auto mb-6 animate-float" />
@@ -14,7 +14,7 @@ const OurStory = () => {
           <div className="h-px w-24 bg-gold mx-auto mb-12" />
 
           <div className="space-y-8">
-            <div className="bg-background p-8 rounded-lg shadow-lg border border-emerald/10 animate-fade-in">
+            <div className="bg-background p-8 rounded-lg shadow-lg border border-emerald/10 animate-fade-in-left hover:shadow-xl transition-all">
               <h3 className="font-serif text-2xl text-emerald mb-4">How We Met</h3>
               <p className="font-sans text-foreground/80 leading-relaxed">
                 Our paths crossed in a beautiful moment orchestrated by divine timing. 
@@ -22,7 +22,7 @@ const OurStory = () => {
               </p>
             </div>
 
-            <div className="bg-background p-8 rounded-lg shadow-lg border border-emerald/10 animate-fade-in">
+            <div className="bg-background p-8 rounded-lg shadow-lg border border-emerald/10 animate-scale-in hover:shadow-xl transition-all">
               <h3 className="font-serif text-2xl text-emerald mb-4">The Journey</h3>
               <p className="font-sans text-foreground/80 leading-relaxed">
                 Through laughter and tears, joy and challenges, we've grown together. 
@@ -30,7 +30,7 @@ const OurStory = () => {
               </p>
             </div>
 
-            <div className="bg-background p-8 rounded-lg shadow-lg border border-emerald/10 animate-fade-in">
+            <div className="bg-background p-8 rounded-lg shadow-lg border border-emerald/10 animate-fade-in-right hover:shadow-xl transition-all">
               <h3 className="font-serif text-2xl text-emerald mb-4">Forever Begins</h3>
               <p className="font-sans text-foreground/80 leading-relaxed">
                 Now, we're ready to say "I do" and begin our forever journey as one. 

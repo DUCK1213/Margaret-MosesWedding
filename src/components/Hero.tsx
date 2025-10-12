@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-emerald overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-emerald overflow-hidden floral-pattern">
       {/* Decorative floral pattern overlay */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-64 h-64 border-l-2 border-t-2 border-gold rounded-tl-full" />
