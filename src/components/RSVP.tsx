@@ -37,11 +37,11 @@ const RSVP = () => {
             <div className="bg-emerald-dark p-6 rounded-lg border-2 border-gold/30">
               <p className="font-serif text-lg text-gold mb-2">Moses</p>
               <a 
-                href="tel:0794660980" 
+                href="tel:+61450827354" 
                 className="flex items-center justify-center gap-2 text-cream hover:text-gold transition-colors"
               >
                 <Phone className="w-5 h-5" />
-                <span className="font-sans">0794 660 980</span>
+                <span className="font-sans">+61 450 827 354</span>
               </a>
             </div>
           </div>

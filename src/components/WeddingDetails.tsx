@@ -61,7 +61,7 @@ const WeddingDetails = () => {
           <div className="text-center bg-card p-8 rounded-lg shadow-lg border border-gold/20 animate-fade-in">
             <p className="font-serif text-lg text-foreground italic leading-relaxed">
               Your presence will be the greatest gift, however, should you wish to honor us 
-              with a gift we kindly request you to share it in an envelope.
+              with a gift we kindly request you to share it in an envelope or via mpesa.
             </p>
           </div>
         </div>
