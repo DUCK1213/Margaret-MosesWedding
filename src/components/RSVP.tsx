@@ -55,8 +55,8 @@ const RSVP = () => {
 ${data.message ? `💬 Message: ${data.message}` : ""}
       `.trim();
 
-      // Send to Margaret's WhatsApp
-      const whatsappUrl = `https://wa.me/254726217550?text=${encodeURIComponent(message)}`;
+      // Send to WhatsApp number: 0724002047
+      const whatsappUrl = `https://wa.me/254724002047?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
 
       toast({
@@ -254,5 +254,7 @@ ${data.message ? `💬 Message: ${data.message}` : ""}
     </section>
   );
 };
-
+<p className="font-serif text-cream/80 mt-4 italic hover:text-gold transition-colors duration-300">
+"To life, To love!"
+</p>
 export default RSVP;

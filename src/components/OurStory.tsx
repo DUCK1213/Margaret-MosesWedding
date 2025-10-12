@@ -31,9 +31,9 @@ const OurStory = () => {
             </div>
 
             <div className="bg-background p-8 rounded-lg shadow-lg border border-emerald/10 animate-fade-in-right hover:shadow-xl transition-all">
-              <h3 className="font-serif text-2xl text-emerald mb-4">Forever Begins</h3>
+              <h3 className="font-serif text-2xl text-emerald mb-4">Forever Promise</h3>
               <p className="font-sans text-foreground/80 leading-relaxed">
-                Now, we're ready to say "I do" and begin our forever journey as one. 
+                We made a promise to walk hand in hand, through the joys and sorrows of life, and to love each other unconditionally. 
                 We're thrilled to celebrate this milestone with our loved ones.
               </p>
             </div>

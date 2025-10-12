@@ -1,73 +1,103 @@
-# Welcome to your Lovable project
+# Wedding Invitation - Margaret & Moses
 
-## Project info
+A beautiful and elegant wedding invitation website featuring modern 3D animations and responsive design.
 
-**URL**: https://lovable.dev/projects/5ab49656-3f3d-4840-a493-dc77ec403d13
+## Project Overview
 
-## How can I edit this code?
+This wedding invitation website celebrates the union of Margaret and Moses, featuring an elegant design with golden and emerald color themes, interactive 3D elements, and smooth animations.
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/5ab49656-3f3d-4840-a493-dc77ec403d13) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technologies Used
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **React** - Modern JavaScript library for building user interfaces
+- **TypeScript** - Type-safe JavaScript for better development experience
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework for rapid styling
+- **shadcn/ui** - Modern UI component library
+- **Custom 3D Animations** - CSS-based 3D transforms and animations
 
-## How can I deploy this project?
+## Development Setup
 
-Simply open [Lovable](https://lovable.dev/projects/5ab49656-3f3d-4840-a493-dc77ec403d13) and click on Share -> Publish.
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn package manager
 
-## Can I connect a custom domain to my Lovable project?
+### Getting Started
 
-Yes, you can!
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd invitation-craft-wedding
+   ```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:5173` to see the application
+
+## Available Scripts
+
+- `npm run dev` - Start development server with hot reload
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint for code quality checks
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   ├── ui/             # Reusable UI components
+│   ├── 3DElements.tsx  # Custom 3D animation components
+│   ├── Hero.tsx        # Main landing section
+│   ├── OurStory.tsx    # Love story section
+│   ├── WeddingDetails.tsx # Wedding information
+│   ├── RSVP.tsx        # RSVP form
+│   └── Footer.tsx      # Footer with contact info
+├── assets/             # Static assets (images, etc.)
+├── lib/               # Utility functions
+└── styles/           # Global styles and Tailwind config
+```
+
+## Features
+
+- ✨ **3D Animations** - Beautiful floating particles, rotating elements, and hover effects
+- 🎨 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- 💫 **Interactive Elements** - Smooth hover animations and transitions
+- 🌟 **Elegant Typography** - Custom fonts and styling for wedding aesthetic
+- 📱 **Modern UI** - Clean, professional design with attention to detail
+
+## Customization
+
+The website uses CSS custom properties for easy theming. Main colors can be modified in `src/index.css`:
+
+```css
+:root {
+  --gold: 45 90% 60%;
+  --emerald: 160 60% 25%;
+  --cream: 45 100% 95%;
+}
+```
+
+## Deployment
+
+This project can be deployed to any static hosting service:
+
+- **Vercel** - Recommended for React apps
+- **Netlify** - Great for static sites
+- **GitHub Pages** - Free hosting for public repositories
+
+Simply run `npm run build` and upload the `dist` folder to your preferred hosting platform.
+
+## Support
+
+For questions or issues, please contact the development team or refer to the component documentation within the codebase.
