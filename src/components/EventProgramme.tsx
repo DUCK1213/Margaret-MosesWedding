@@ -8,6 +8,12 @@ const EventProgramme = () => {
     { time: "11:30 AM", event: "Photo Session", icon: Camera },
   ];
 
+  const photoSessionEvents = [
+    { time: "12:30 PM", event: "Arrive at Windsor Hotel", icon: Sparkles },
+    { time: "1:00 PM", event: "Couple Photo Shoot", icon: Camera },
+    { time: "1:30 PM", event: "Bridal Party Photos", icon: Camera },
+  ];
+
   const receptionEvents = [
     { time: "2:00 PM", event: "Guest Arrival & Cocktails", icon: Sparkles },
     { time: "3:00 PM", event: "Grand Entrance", icon: PartyPopper },
@@ -39,7 +45,7 @@ const EventProgramme = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Ceremony Programme */}
           <div className="animate-fade-in-left">
             <div className="text-center mb-8">
@@ -54,6 +60,38 @@ const EventProgramme = () => {
               
               <div className="space-y-6">
                 {ceremonyEvents.map((item, index) => (
+                  <div 
+                    key={index} 
+                    className="flex items-start gap-4 group"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="relative z-10 w-12 h-12 rounded-full bg-emerald border-2 border-gold flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                      <item.icon className="w-5 h-5 text-gold" />
+                    </div>
+                    <div className="flex-1 bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-gold/20 group-hover:border-gold/40 transition-colors duration-300">
+                      <p className="font-serif text-gold font-semibold">{item.time}</p>
+                      <p className="font-serif text-cream">{item.event}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Photo Session Programme */}
+          <div className="animate-fade-in">
+            <div className="text-center mb-8">
+              <h3 className="font-serif text-2xl text-gold border-b-2 border-gold/30 pb-2 inline-block">
+                Photo Session
+              </h3>
+              <p className="font-serif text-cream/60 mt-2">Windsor Hotel</p>
+            </div>
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/60 via-gold/40 to-gold/20" />
+              
+              <div className="space-y-6">
+                {photoSessionEvents.map((item, index) => (
                   <div 
                     key={index} 
                     className="flex items-start gap-4 group"
