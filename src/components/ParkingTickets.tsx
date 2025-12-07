@@ -1,5 +1,6 @@
 import { Car, MapPin, Clock, Ticket } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import ParkingPass from "./ParkingPass";
 
 const ParkingTickets = () => {
   return (
@@ -35,7 +36,7 @@ const ParkingTickets = () => {
               <div className="space-y-3 text-emerald-light">
                 <div className="flex items-center justify-center gap-2">
                   <MapPin className="w-4 h-4 text-gold" />
-                  <span className="font-serif">PCEA Church Grounds</span>
+                  <span className="font-serif">St. Michael & All Angels, Ruiru</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <Clock className="w-4 h-4 text-gold" />
@@ -58,7 +59,7 @@ const ParkingTickets = () => {
               <div className="space-y-3 text-emerald-light">
                 <div className="flex items-center justify-center gap-2">
                   <MapPin className="w-4 h-4 text-gold" />
-                  <span className="font-serif">The Woods Venue</span>
+                  <span className="font-serif">Homeland Ruiru Resort</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <Clock className="w-4 h-4 text-gold" />
@@ -72,8 +73,11 @@ const ParkingTickets = () => {
           </Card>
         </div>
 
+        {/* Digital Parking Pass */}
+        <ParkingPass />
+
         {/* Additional Note */}
-        <div className="text-center mt-8 animate-scale-in">
+        <div className="text-center mt-8 animate-scale-in print:hidden">
           <p className="font-serif text-emerald-light italic">
             Parking attendants will be available to guide you
           </p>
