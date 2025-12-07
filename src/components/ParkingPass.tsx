@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Car, MapPin, Calendar, Clock, Download, Printer, IdCard, User, CarFront } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,14 +9,43 @@ const ParkingPass = () => {
   const [guestName, setGuestName] = useState("");
   const [idNumber, setIdNumber] = useState("");
   const [plateNumber, setPlateNumber] = useState("");
+  const [botField, setBotField] = useState("");
 
-  const handlePrint = () => {
+  const submitParkingForm = async () => {
+    if (botField) return;
+
+    const formData = new URLSearchParams({
+      "form-name": "parking-pass",
+      "guest-name": guestName || "",
+      "id-number": idNumber || "",
+      "plate-number": plateNumber || "",
+    });
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
+      });
+    } catch (error) {
+      console.error("Failed to submit parking form to Netlify", error);
+    }
+  };
+
+  const handlePrint = async () => {
+    await submitParkingForm();
     window.print();
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
+    await submitParkingForm();
     // Trigger print dialog which allows saving as PDF
     window.print();
+  };
+
+  const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    await submitParkingForm();
   };
 
   return (
@@ -100,7 +129,31 @@ const ParkingPass = () => {
           </div>
 
           {/* Guest Details */}
-          <div className="mt-6 bg-white/60 rounded-lg p-4 space-y-4">
+          <form
+            name="parking-pass"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleFormSubmit}
+            className="mt-6 bg-white/60 rounded-lg p-4 space-y-4"
+          >
+            <input type="hidden" name="form-name" value="parking-pass" />
+
+            <div className="hidden">
+              <Label htmlFor="parking-bot" className="text-emerald text-xs font-serif">
+                Do not fill this out
+              </Label>
+              <input
+                id="parking-bot"
+                name="bot-field"
+                value={botField}
+                onChange={(event) => setBotField(event.target.value)}
+                className="sr-only"
+                tabIndex={-1}
+                aria-hidden="true"
+              />
+            </div>
+
             <div>
               <Label htmlFor="guest-name" className="flex items-center gap-2 text-emerald text-xs font-serif uppercase tracking-[0.2em]">
                 <User className="w-3 h-3 text-gold" />
@@ -108,6 +161,7 @@ const ParkingPass = () => {
               </Label>
               <Input
                 id="guest-name"
+                name="guest-name"
                 value={guestName}
                 onChange={(event) => setGuestName(event.target.value)}
                 placeholder="Full legal name"
@@ -123,6 +177,7 @@ const ParkingPass = () => {
                 </Label>
                 <Input
                   id="guest-id"
+                  name="id-number"
                   value={idNumber}
                   onChange={(event) => setIdNumber(event.target.value)}
                   placeholder="ID number"
@@ -137,6 +192,7 @@ const ParkingPass = () => {
                 </Label>
                 <Input
                   id="plate-number"
+                  name="plate-number"
                   value={plateNumber}
                   onChange={(event) => setPlateNumber(event.target.value)}
                   placeholder="KAA 123A"
@@ -144,7 +200,11 @@ const ParkingPass = () => {
                 />
               </div>
             </div>
-          </div>
+
+            <button type="submit" className="sr-only">
+              Save Parking Pass
+            </button>
+          </form>
 
           {/* Footer */}
           <div className="mt-6 text-center">

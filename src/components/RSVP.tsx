@@ -19,6 +19,7 @@ const rsvpSchema = z.object({
   }),
   guests: z.string().trim().min(1, "Please specify number of guests"),
   message: z.string().trim().max(500).optional(),
+  botField: z.string().optional(),
 });
 
 type RSVPFormData = z.infer<typeof rsvpSchema>;
@@ -41,9 +42,29 @@ const RSVP = () => {
   const attending = watch("attending");
 
   const onSubmit = async (data: RSVPFormData) => {
+    if (data.botField) {
+      return;
+    }
+
     setIsSubmitting(true);
     
     try {
+      const formData = new URLSearchParams({
+        "form-name": "rsvp",
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        attending: data.attending,
+        guests: data.guests,
+        message: data.message ?? "",
+      });
+
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData.toString(),
+      });
+
       // Format message for WhatsApp
       const message = `
 *RSVP for Margaret & Moses Wedding*
@@ -105,7 +126,28 @@ ${data.message ? `💬 Message: ${data.message}` : ""}
 
           {/* RSVP Form */}
           <div className="bg-emerald-dark/50 backdrop-blur-sm p-8 rounded-lg border-2 border-gold/30 shadow-2xl animate-scale-in">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <form
+              name="rsvp"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-6"
+            >
+              <input type="hidden" name="form-name" value="rsvp" />
+
+              <div className="hidden">
+                <Label className="text-cream font-serif" htmlFor="bot-field">
+                  Do not fill this out
+                </Label>
+                <input
+                  id="bot-field"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  {...register("botField")}
+                  className="sr-only"
+                />
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-cream font-serif">
                   Full Name *
