@@ -60,15 +60,61 @@ const ParkingPass = () => {
     }
   };
 
+  const openPrintWindow = () => {
+    if (!passRef.current) {
+      alert("Parking pass is not ready yet. Please try again.");
+      return;
+    }
+
+    const styles = Array.from(document.querySelectorAll("style, link[rel='stylesheet']"))
+      .map((node) => node.outerHTML)
+      .join("");
+
+    const printWindow = window.open("", "_blank", "width=900,height=700");
+    if (!printWindow) {
+      alert("Unable to open print preview. Please allow pop-ups and try again.");
+      return;
+    }
+
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Parking Pass</title>
+          ${styles}
+          <style>
+            @page { size: A5 portrait; margin: 0; }
+            body {
+              margin: 0;
+              padding: 20px;
+              background: #f5f0ea;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            #parking-pass {
+              margin: 0 auto;
+            }
+          </style>
+        </head>
+        <body>
+          ${passRef.current.outerHTML}
+        </body>
+      </html>
+    `);
+
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+  };
+
   const handlePrint = async () => {
     await submitParkingForm();
-    window.print();
+    openPrintWindow();
   };
 
   const handleDownload = async () => {
     await submitParkingForm();
-    // Trigger print dialog which allows saving as PDF
-    window.print();
+    openPrintWindow();
   };
 
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
