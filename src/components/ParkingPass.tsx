@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { toast } from "sonner";
 
 const ParkingPass = () => {
   const passRef = useRef<HTMLDivElement>(null);
@@ -42,19 +43,22 @@ const ParkingPass = () => {
   const submitParkingForm = async () => {
     if (botField) return;
 
-    const formData = new URLSearchParams({
-      "form-name": "parking-pass",
-      "guest-name": guestName || "",
-      "phone-number": phoneNumber || "",
-      "plate-number": plateNumber || "",
-    });
-
     try {
-      await fetch("/", {
+      const response = await fetch("/.netlify/functions/parking-log", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          guestName,
+          phoneNumber,
+          plateNumber,
+          venue: venueOptions[selectedVenue].label,
+          action: "register",
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to save parking pass details");
+      }
     } catch (error) {
       console.error("Failed to submit parking form to Netlify", error);
     }
@@ -124,11 +128,32 @@ const ParkingPass = () => {
 
   const handleCheckEvent = async (action: "in" | "out") => {
     if (!plateNumber.trim()) {
-      alert("Please enter the vehicle plate number before logging check-ins.");
+      toast.error("Please enter the vehicle plate number before logging check-ins.");
       return;
     }
 
-    await submitParkingForm();
+    try {
+      const response = await fetch("/.netlify/functions/parking-log", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          guestName,
+          phoneNumber,
+          plateNumber,
+          venue: venueOptions[selectedVenue].label,
+          action,
+        }),
+      });
+
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.error || "Failed to log parking update");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to log parking entry. Please try again.");
+      return;
+    }
 
     const venue = venueOptions[selectedVenue];
     const timestamp = new Date().toLocaleString("en-GB", {
@@ -148,16 +173,20 @@ const ParkingPass = () => {
     const whatsappUrl = `https://wa.me/254723004726?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
 
-    setActivityLog((prev) => [
-      {
-        id: crypto.randomUUID(),
-        action,
-        time: timestamp,
-        venue: venue.label,
-        plate: plateNumber.toUpperCase(),
-      },
-      ...prev,
-    ].slice(0, 6));
+    toast.success(`Vehicle ${action === "in" ? "checked in" : "checked out"} successfully.`);
+
+    setActivityLog((prev) =>
+      [
+        {
+          id: crypto.randomUUID(),
+          action,
+          time: timestamp,
+          venue: venue.label,
+          plate: plateNumber.toUpperCase(),
+        },
+        ...prev,
+      ].slice(0, 6),
+    );
   };
 
   return (

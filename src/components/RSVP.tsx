@@ -49,21 +49,23 @@ const RSVP = () => {
     setIsSubmitting(true);
     
     try {
-      const formData = new URLSearchParams({
-        "form-name": "rsvp",
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        attending: data.attending,
-        guests: data.guests,
-        message: data.message ?? "",
+      const response = await fetch("/.netlify/functions/rsvp-submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          attending: data.attending,
+          guests: data.guests,
+          message: data.message,
+        }),
       });
 
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData.toString(),
-      });
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.error || "Failed to submit RSVP");
+      }
 
       // Format message for WhatsApp
       const message = `
