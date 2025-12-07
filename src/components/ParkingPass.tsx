@@ -1,8 +1,21 @@
 import { FormEvent, useRef, useState } from "react";
-import { Car, MapPin, Calendar, Clock, Download, Printer, IdCard, User, CarFront } from "lucide-react";
+import {
+  Car,
+  MapPin,
+  Calendar,
+  Clock,
+  Download,
+  Printer,
+  IdCard,
+  User,
+  CarFront,
+  ArrowDownCircle,
+  ArrowUpCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const ParkingPass = () => {
   const passRef = useRef<HTMLDivElement>(null);
@@ -10,6 +23,21 @@ const ParkingPass = () => {
   const [idNumber, setIdNumber] = useState("");
   const [plateNumber, setPlateNumber] = useState("");
   const [botField, setBotField] = useState("");
+  const [selectedVenue, setSelectedVenue] = useState<"ceremony" | "reception">("ceremony");
+  const [activityLog, setActivityLog] = useState<
+    { id: string; action: "in" | "out"; time: string; venue: string; plate: string }[]
+  >([]);
+
+  const venueOptions = {
+    ceremony: {
+      label: "Ceremony Entrance",
+      location: "A.C.K Diocese of Thika - Ruiru Parish",
+    },
+    reception: {
+      label: "Reception Entrance",
+      location: "Homeland Ruiru Resort",
+    },
+  };
 
   const submitParkingForm = async () => {
     if (botField) return;
@@ -46,6 +74,44 @@ const ParkingPass = () => {
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     await submitParkingForm();
+  };
+
+  const handleCheckEvent = async (action: "in" | "out") => {
+    if (!plateNumber.trim()) {
+      alert("Please enter the vehicle plate number before logging check-ins.");
+      return;
+    }
+
+    await submitParkingForm();
+
+    const venue = venueOptions[selectedVenue];
+    const timestamp = new Date().toLocaleString("en-GB", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+    const actionText = action === "in" ? "arrived at" : "departed from";
+    const message = `
+*Parking Update*
+🚗 Plate: ${plateNumber.toUpperCase()}
+👤 Guest: ${guestName || "Unknown"}
+📍 Venue: ${venue.label}
+🕒 Time: ${timestamp}
+➡️ Vehicle has ${actionText} ${venue.location}
+    `.trim();
+
+    const whatsappUrl = `https://wa.me/254723004726?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+
+    setActivityLog((prev) => [
+      {
+        id: crypto.randomUUID(),
+        action,
+        time: timestamp,
+        venue: venue.label,
+        plate: plateNumber.toUpperCase(),
+      },
+      ...prev,
+    ].slice(0, 6));
   };
 
   return (
@@ -205,6 +271,80 @@ const ParkingPass = () => {
               Save Parking Pass
             </button>
           </form>
+
+          {/* Venue Check-in */}
+          <div className="mt-6 bg-white/60 rounded-lg p-4 space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-serif text-emerald text-xs uppercase tracking-[0.3em]">Check-In System</p>
+                <p className="text-emerald-light text-xs">Send arrival/departure notices via WhatsApp</p>
+              </div>
+              <div className="text-right text-xs text-emerald-light">
+                <p>WhatsApp: 0723 004 726</p>
+              </div>
+            </div>
+
+            <div>
+              <Label className="text-emerald text-xs font-serif uppercase tracking-[0.2em] mb-2 block">
+                Select Venue
+              </Label>
+              <RadioGroup
+                value={selectedVenue}
+                onValueChange={(value) => setSelectedVenue(value as "ceremony" | "reception")}
+                className="grid sm:grid-cols-2 gap-3"
+              >
+                {Object.entries(venueOptions).map(([key, venue]) => (
+                  <label
+                    key={key}
+                    className="flex items-start gap-3 rounded-lg border border-gold/30 bg-white/70 p-3 cursor-pointer hover:border-gold transition-colors"
+                  >
+                    <RadioGroupItem value={key} id={`venue-${key}`} className="mt-1 border-gold text-gold" />
+                    <div>
+                      <p className="font-serif text-emerald">{venue.label}</p>
+                      <p className="text-xs text-emerald-light">{venue.location}</p>
+                    </div>
+                  </label>
+                ))}
+              </RadioGroup>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-3">
+              <Button
+                onClick={() => handleCheckEvent("in")}
+                className="bg-emerald text-cream flex items-center gap-2 font-serif"
+              >
+                <ArrowDownCircle className="w-4 h-4" />
+                Check In Vehicle
+              </Button>
+              <Button
+                onClick={() => handleCheckEvent("out")}
+                variant="outline"
+                className="border-emerald text-emerald hover:bg-emerald/10 flex items-center gap-2 font-serif"
+              >
+                <ArrowUpCircle className="w-4 h-4" />
+                Check Out Vehicle
+              </Button>
+            </div>
+
+            {activityLog.length > 0 && (
+              <div className="bg-white/80 border border-gold/20 rounded-lg p-3 space-y-2">
+                <p className="font-serif text-emerald text-sm">Recent Activity</p>
+                <div className="space-y-2 max-h-48 overflow-auto">
+                  {activityLog.map((log) => (
+                    <div key={log.id} className="flex items-start gap-2 text-xs text-emerald">
+                      <span className="font-serif text-gold">{log.action === "in" ? "IN" : "OUT"}</span>
+                      <div>
+                        <p className="font-serif">
+                          {log.plate} • {log.venue}
+                        </p>
+                        <p className="text-emerald-light">{log.time}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* Footer */}
           <div className="mt-6 text-center">
