@@ -20,7 +20,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 const ParkingPass = () => {
   const passRef = useRef<HTMLDivElement>(null);
   const [guestName, setGuestName] = useState("");
-  const [idNumber, setIdNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [plateNumber, setPlateNumber] = useState("");
   const [botField, setBotField] = useState("");
   const [selectedVenue, setSelectedVenue] = useState<"ceremony" | "reception">("ceremony");
@@ -45,7 +45,7 @@ const ParkingPass = () => {
     const formData = new URLSearchParams({
       "form-name": "parking-pass",
       "guest-name": guestName || "",
-      "id-number": idNumber || "",
+      "phone-number": phoneNumber || "",
       "plate-number": plateNumber || "",
     });
 
@@ -237,16 +237,16 @@ const ParkingPass = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="guest-id" className="flex items-center gap-2 text-emerald text-xs font-serif uppercase tracking-[0.2em]">
+                <Label htmlFor="phone-number" className="flex items-center gap-2 text-emerald text-xs font-serif uppercase tracking-[0.2em]">
                   <IdCard className="w-3 h-3 text-gold" />
-                  ID / Passport No.
+                  Phone Number
                 </Label>
                 <Input
-                  id="guest-id"
-                  name="id-number"
-                  value={idNumber}
-                  onChange={(event) => setIdNumber(event.target.value)}
-                  placeholder="ID number"
+                  id="phone-number"
+                  name="phone-number"
+                  value={phoneNumber}
+                  onChange={(event) => setPhoneNumber(event.target.value)}
+                  placeholder="e.g. 0723 004 726"
                   className="mt-1 bg-white border-gold/40 text-emerald text-sm font-serif placeholder:text-emerald-light/60 focus-visible:ring-gold"
                 />
               </div>
