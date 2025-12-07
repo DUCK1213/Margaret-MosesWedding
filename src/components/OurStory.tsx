@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 
 const OurStory = () => {
   return (
-    <section className="py-20 bg-cream leaf-pattern">
+    <section id="story" className="py-16 sm:py-20 bg-cream leaf-pattern scroll-mt-28">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <Heart className="w-10 h-10 text-emerald mx-auto mb-6 animate-float" />

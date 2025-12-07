@@ -1,9 +1,14 @@
-import { useRef } from "react";
-import { Car, MapPin, Calendar, Clock, Download, Printer } from "lucide-react";
+import { useRef, useState } from "react";
+import { Car, MapPin, Calendar, Clock, Download, Printer, IdCard, User, CarFront } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const ParkingPass = () => {
   const passRef = useRef<HTMLDivElement>(null);
+  const [guestName, setGuestName] = useState("");
+  const [idNumber, setIdNumber] = useState("");
+  const [plateNumber, setPlateNumber] = useState("");
 
   const handlePrint = () => {
     window.print();
@@ -15,7 +20,7 @@ const ParkingPass = () => {
   };
 
   return (
-    <div className="mt-12 max-w-md mx-auto">
+    <div className="mt-12 mx-auto max-w-md px-4 print:px-0 print:mt-0">
       <h3 className="font-serif text-2xl text-emerald text-center mb-6">
         Your Digital Parking Pass
       </h3>
@@ -24,14 +29,15 @@ const ParkingPass = () => {
       <div 
         ref={passRef}
         id="parking-pass"
-        className="bg-gradient-to-br from-emerald to-emerald-light p-1 rounded-2xl shadow-2xl print:shadow-none"
+        className="bg-gradient-to-br from-emerald to-emerald-light p-[3px] rounded-2xl shadow-2xl print:shadow-none mx-auto"
+        style={{ width: "min(100%, 102mm)", minHeight: "144mm" }}
       >
-        <div className="bg-cream rounded-xl p-6 relative overflow-hidden">
+        <div className="bg-cream rounded-xl p-6 relative overflow-hidden h-full flex flex-col">
           {/* Decorative corner elements */}
-          <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-gold rounded-tl-xl" />
-          <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-gold rounded-tr-xl" />
-          <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-gold rounded-bl-xl" />
-          <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-gold rounded-br-xl" />
+          <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-gold rounded-tl-xl" />
+          <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-gold rounded-tr-xl" />
+          <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-gold rounded-bl-xl" />
+          <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-gold rounded-br-xl" />
           
           {/* Header */}
           <div className="text-center mb-6">
@@ -89,6 +95,53 @@ const ParkingPass = () => {
                   <Clock className="w-3 h-3 text-gold" />
                   <span className="font-serif text-emerald-light text-xs">Parking from 1:00 PM</span>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Guest Details */}
+          <div className="mt-6 bg-white/60 rounded-lg p-4 space-y-4">
+            <div>
+              <Label htmlFor="guest-name" className="flex items-center gap-2 text-emerald text-xs font-serif uppercase tracking-[0.2em]">
+                <User className="w-3 h-3 text-gold" />
+                Guest Name
+              </Label>
+              <Input
+                id="guest-name"
+                value={guestName}
+                onChange={(event) => setGuestName(event.target.value)}
+                placeholder="Full legal name"
+                className="mt-1 bg-white border-gold/40 text-emerald text-sm font-serif placeholder:text-emerald-light/60 focus-visible:ring-gold"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="guest-id" className="flex items-center gap-2 text-emerald text-xs font-serif uppercase tracking-[0.2em]">
+                  <IdCard className="w-3 h-3 text-gold" />
+                  ID / Passport No.
+                </Label>
+                <Input
+                  id="guest-id"
+                  value={idNumber}
+                  onChange={(event) => setIdNumber(event.target.value)}
+                  placeholder="ID number"
+                  className="mt-1 bg-white border-gold/40 text-emerald text-sm font-serif placeholder:text-emerald-light/60 focus-visible:ring-gold"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="plate-number" className="flex items-center gap-2 text-emerald text-xs font-serif uppercase tracking-[0.2em]">
+                  <CarFront className="w-3 h-3 text-gold" />
+                  Plate Number
+                </Label>
+                <Input
+                  id="plate-number"
+                  value={plateNumber}
+                  onChange={(event) => setPlateNumber(event.target.value)}
+                  placeholder="KAA 123A"
+                  className="mt-1 bg-white border-gold/40 text-emerald text-sm font-serif placeholder:text-emerald-light/60 focus-visible:ring-gold"
+                />
               </div>
             </div>
           </div>

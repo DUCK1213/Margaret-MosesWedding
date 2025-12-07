@@ -4,11 +4,11 @@ import LocationMap from "./LocationMap";
 
 const WeddingDetails = () => {
   return (
-    <section className="py-20 bg-background leaf-pattern">
+    <section id="details" className="py-16 sm:py-20 bg-background leaf-pattern scroll-mt-28">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-12">
           {/* Couple Photo */}
-          <div className="flex justify-center mb-12 animate-scale-in">
+          <div className="flex justify-center animate-scale-in">
             <div className="relative">
               <div className="absolute -inset-4 border-2 border-gold rounded-full" />
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-cream shadow-2xl">
@@ -30,9 +30,9 @@ const WeddingDetails = () => {
           </div>
 
           {/* Bible Verse */}
-          <div className="text-center mb-16 animate-fade-in">
-            <div className="max-w-3xl mx-auto bg-card p-8 rounded-lg shadow-lg border border-gold/20">
-              <p className="font-serif text-lg md:text-xl text-foreground italic leading-relaxed">
+          <div className="text-center animate-fade-in">
+            <div className="max-w-3xl mx-auto bg-card/90 p-6 sm:p-8 rounded-lg shadow-lg border border-gold/20">
+              <p className="font-serif text-base sm:text-lg md:text-xl text-foreground italic leading-relaxed">
                 "I have come into my garden, my bride; I have gathered my myrrh with my spice.
                 I have eaten my honeycomb and my honey; I drank my wine with my milk...
                 celebrate with me friends, raise your glasses, To life!, To love!"
@@ -41,12 +41,12 @@ const WeddingDetails = () => {
           </div>
 
           {/* Ceremony Details */}
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <div className="bg-emerald p-8 rounded-lg shadow-xl text-center animate-fade-in-left hover:scale-105 transition-transform">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-emerald p-6 sm:p-8 rounded-lg shadow-xl text-center animate-fade-in-left hover:scale-[1.02] transition-transform">
               <MapPin className="w-12 h-12 text-gold mx-auto mb-4" />
               <h3 className="font-serif text-2xl font-semibold text-gold mb-2">Ceremony</h3>
               <div className="h-px w-16 bg-gold mx-auto mb-4" />
-              <p className="font-serif text-xl text-cream mb-2">A.C.K Diocese of Thika - Ruiru Parish</p>
+              <p className="font-serif text-lg sm:text-xl text-cream mb-2">A.C.K Diocese of Thika - Ruiru Parish</p>
               <p className="font-sans text-cream/80">Ruiru Town, Kiambu</p>
               <div className="mt-4 flex items-center justify-center gap-2">
                 <Clock className="w-5 h-5 text-gold" />
@@ -54,11 +54,11 @@ const WeddingDetails = () => {
               </div>
             </div>
 
-            <div className="bg-emerald p-8 rounded-lg shadow-xl text-center animate-fade-in-right hover:scale-105 transition-transform">
+            <div className="bg-emerald p-6 sm:p-8 rounded-lg shadow-xl text-center animate-fade-in-right hover:scale-[1.02] transition-transform">
               <PartyPopper className="w-12 h-12 text-gold mx-auto mb-4" />
               <h3 className="font-serif text-2xl font-semibold text-gold mb-2">Reception</h3>
               <div className="h-px w-16 bg-gold mx-auto mb-4" />
-              <p className="font-serif text-xl text-cream mb-2">Homeland Ruiru Resort</p>
+              <p className="font-serif text-lg sm:text-xl text-cream mb-2">Homeland Ruiru Resort</p>
               <p className="font-sans text-cream/80">Following the ceremony</p>
             </div>
           </div>
@@ -67,7 +67,7 @@ const WeddingDetails = () => {
           <LocationMap />
 
           {/* WhatsApp Contact */}
-          <div className="text-center bg-card p-8 rounded-lg shadow-lg border border-gold/20 animate-fade-in">
+          <div className="text-center bg-card p-6 sm:p-8 rounded-lg shadow-lg border border-gold/20 animate-fade-in">
             <MessageCircle className="w-12 h-12 text-gold mx-auto mb-4" />
             <p className="font-serif text-lg text-foreground italic leading-relaxed">
               For any questions or clarifications, please reach us on WhatsApp: +254 724 002 047

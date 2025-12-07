@@ -394,3 +394,42 @@ All colors MUST be HSL.
     transform: rotateY(120deg) translateZ(-125px) scale(0.95);
   }
 }
+
+@page {
+  size: A5 portrait;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    width: 148mm;
+    height: 210mm;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: white;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #parking-pass,
+  #parking-pass * {
+    visibility: visible;
+  }
+
+  #parking-pass {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 148mm;
+    height: 210mm;
+    overflow: hidden;
+    page-break-inside: avoid;
+    page-break-before: auto;
+    page-break-after: auto;
+    box-shadow: none !important;
+  }
+}
