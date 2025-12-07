@@ -65,13 +65,9 @@ const Footer = () => {
           </div>
          
           <p className="font-sans text-sm text-cream/60">
-            © 2025 Duck Design . All rights reserved </p>
-            <p font-serif font size="small" className="text-gold">0723004726</p>
-          
-
-          <Hover3DEffect intensity="low">
-          
-          </Hover3DEffect>
+            © 2025 Duck Design. All rights reserved
+          </p>
+          <p className="font-serif text-sm text-gold mt-1">0723004726</p>
         </div>
       </div>
     </footer>
