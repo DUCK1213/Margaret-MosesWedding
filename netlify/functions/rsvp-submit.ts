@@ -1,5 +1,5 @@
 import type { Handler } from "@netlify/functions";
-import { createStore } from "@netlify/blobs";
+import { getStore } from "@netlify/blobs";
 import { sendWhatsAppMessage } from "../lib/whatsapp";
 
 const RSVP_STORE = "rsvp-submissions";
@@ -33,7 +33,7 @@ const handler: Handler = async (event) => {
       receivedAt: new Date().toISOString(),
     };
 
-    const store = await createStore({ name: RSVP_STORE });
+    const store = await getStore({ name: RSVP_STORE });
     await store.set(`rsvp_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`, JSON.stringify(submission));
 
     const recipients = process.env.RSVP_NOTIFICATION_RECIPIENTS?.split(",").map((num) => num.trim()).filter(Boolean) ?? [];
