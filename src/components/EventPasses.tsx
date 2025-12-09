@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Download, Car, User, Users, Plus, Trash2 } from 'lucide-react';
-import { PDFDownloadButton, PDFPreview } from '@/utils/pdfUtils';
-import ParkingPass from './pdf/ParkingPass';
-import VolunteerTag from './pdf/VolunteerTag';
+import { PDFMeService } from '@/services/pdfmeService';
 
 const EventPasses: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'parking' | 'volunteer'>('parking');
@@ -76,6 +74,37 @@ const EventPasses: React.FC = () => {
   const downloadAllVolunteerTags = () => {
     // In a real app, you would implement batch PDF generation
     alert('Batch download would be implemented here');
+  };
+
+  const downloadParkingPass = async (pass: typeof parkingPasses[0]) => {
+    try {
+      await PDFMeService.generateAndDownloadParkingPass({
+        name: pass.name || 'Guest',
+        plateNumber: pass.plateNumber || 'Not Specified',
+        passNumber: pass.passNumber,
+        eventDate: 'December 12, 2025',
+        eventLocation: 'Homeland Ruiru Resort'
+      });
+    } catch (error) {
+      console.error('Error downloading parking pass:', error);
+      alert('Failed to download parking pass');
+    }
+  };
+
+  const downloadVolunteerTag = async (tag: typeof volunteerTags[0]) => {
+    try {
+      await PDFMeService.generateAndDownloadVolunteerTag({
+        name: tag.name || 'Volunteer',
+        role: tag.role,
+        idNumber: tag.idNumber,
+        eventName: 'Margaret & Moses Wedding',
+        eventDate: 'December 12, 2025',
+        emergencyContact: tag.emergencyContact || 'Not specified'
+      });
+    } catch (error) {
+      console.error('Error downloading volunteer tag:', error);
+      alert('Failed to download volunteer tag');
+    }
   };
 
   return (
@@ -162,20 +191,13 @@ const EventPasses: React.FC = () => {
                 </div>
 
                 <div className="flex justify-end">
-                  <PDFDownloadButton
-                    pdfDocument={
-                      <ParkingPass
-                        name={pass.name || 'Guest'}
-                        plateNumber={pass.plateNumber || 'Not Specified'}
-                        passNumber={pass.passNumber}
-                        eventDate="December 12, 2025"
-                        eventLocation="Homeland Ruiru Resort"
-                      />
-                    }
-                    fileName={`Parking_Pass_${pass.passNumber}`}
-                    buttonText="Download Pass"
+                  <Button 
+                    onClick={() => downloadParkingPass(pass)}
                     className="bg-emerald-600 hover:bg-emerald-700 text-white"
-                  />
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download Pass
+                  </Button>
                 </div>
               </div>
             ))}
@@ -260,21 +282,13 @@ const EventPasses: React.FC = () => {
                 </div>
 
                 <div className="flex justify-end">
-                  <PDFDownloadButton
-                    pdfDocument={
-                      <VolunteerTag
-                        name={tag.name || 'Volunteer'}
-                        role={tag.role}
-                        idNumber={tag.idNumber}
-                        eventName="Margaret & Moses Wedding"
-                        eventDate="December 12, 2025"
-                        emergencyContact={tag.emergencyContact || 'Not specified'}
-                      />
-                    }
-                    fileName={`Volunteer_Tag_${tag.idNumber}`}
-                    buttonText="Download Tag"
+                  <Button 
+                    onClick={() => downloadVolunteerTag(tag)}
                     className="bg-amber-600 hover:bg-amber-700 text-white"
-                  />
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Download Tag
+                  </Button>
                 </div>
               </div>
             ))}

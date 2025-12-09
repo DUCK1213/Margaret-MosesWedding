@@ -14,6 +14,8 @@ const navItems: NavAnchor[] = [
   { label: "Parking", href: "#parking", type: "anchor" },
   { label: "RSVP", href: "#rsvp", type: "anchor" },
   { label: "Parking Pass", href: "/parking-pass", type: "route" },
+  { label: "Documents", href: "/documents", type: "route" },
+  { label: "Templates", href: "/templates", type: "route" },
 ];
 
 const HeaderNav = () => {
