@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useRef, useState, useEffect } from "react";
 import {
   Car,
   MapPin,
@@ -11,12 +11,14 @@ import {
   CarFront,
   ArrowDownCircle,
   ArrowUpCircle,
+  History,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const ParkingPass = () => {
   const passRef = useRef<HTMLDivElement>(null);
@@ -26,7 +28,7 @@ const ParkingPass = () => {
   const [botField, setBotField] = useState("");
   const [selectedVenue, setSelectedVenue] = useState<"ceremony" | "reception">("ceremony");
   const [activityLog, setActivityLog] = useState<
-    { id: string; action: "in" | "out"; time: string; venue: string; plate: string }[]
+    { id: string; action: "in" | "out"; time: string; venue: string; plate: string; guestName?: string }[]
   >([]);
 
   const venueOptions = {
@@ -40,27 +42,56 @@ const ParkingPass = () => {
     },
   };
 
+  // Fetch recent logs on mount
+  useEffect(() => {
+    const fetchRecentLogs = async () => {
+      const { data, error } = await supabase
+        .from("parking_logs")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(6);
+
+      if (!error && data) {
+        setActivityLog(
+          data.map((log) => ({
+            id: log.id,
+            action: log.action as "in" | "out",
+            time: new Date(log.created_at).toLocaleString("en-GB", {
+              dateStyle: "medium",
+              timeStyle: "short",
+            }),
+            venue: log.venue,
+            plate: log.plate_number,
+            guestName: log.guest_name,
+          }))
+        );
+      }
+    };
+    fetchRecentLogs();
+  }, []);
+
+  const logToDatabase = async (action: "register" | "in" | "out") => {
+    const { error } = await supabase.from("parking_logs").insert({
+      guest_name: guestName || "Unknown",
+      phone_number: phoneNumber || null,
+      plate_number: plateNumber.toUpperCase(),
+      venue: venueOptions[selectedVenue].label,
+      action,
+    });
+
+    if (error) {
+      console.error("Failed to log to database:", error);
+      throw error;
+    }
+  };
+
   const submitParkingForm = async () => {
     if (botField) return;
 
     try {
-      const response = await fetch("/.netlify/functions/parking-log", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          guestName,
-          phoneNumber,
-          plateNumber,
-          venue: venueOptions[selectedVenue].label,
-          action: "register",
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to save parking pass details");
-      }
+      await logToDatabase("register");
     } catch (error) {
-      console.error("Failed to submit parking form to Netlify", error);
+      console.error("Failed to submit parking form", error);
     }
   };
 
@@ -133,22 +164,7 @@ const ParkingPass = () => {
     }
 
     try {
-      const response = await fetch("/.netlify/functions/parking-log", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          guestName,
-          phoneNumber,
-          plateNumber,
-          venue: venueOptions[selectedVenue].label,
-          action,
-        }),
-      });
-
-      if (!response.ok) {
-        const err = await response.json().catch(() => ({}));
-        throw new Error(err.error || "Failed to log parking update");
-      }
+      await logToDatabase(action);
     } catch (error) {
       console.error(error);
       toast.error("Failed to log parking entry. Please try again.");
@@ -183,6 +199,7 @@ const ParkingPass = () => {
           time: timestamp,
           venue: venue.label,
           plate: plateNumber.toUpperCase(),
+          guestName: guestName || "Unknown",
         },
         ...prev,
       ].slice(0, 6),

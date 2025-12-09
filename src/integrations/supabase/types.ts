@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      parking_logs: {
+        Row: {
+          action: string
+          created_at: string
+          extra_message: string | null
+          guest_name: string
+          id: string
+          phone_number: string | null
+          plate_number: string
+          venue: string
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          extra_message?: string | null
+          guest_name: string
+          id?: string
+          phone_number?: string | null
+          plate_number: string
+          venue: string
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          extra_message?: string | null
+          guest_name?: string
+          id?: string
+          phone_number?: string | null
+          plate_number?: string
+          venue?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
