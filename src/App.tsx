@@ -7,8 +7,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ParkingPassPage from "./pages/ParkingPassPage";
 import SiteLayout from "./components/SiteLayout";
-import DocumentPreview from "./components/DocumentPreview";
-import TemplateEditor from "./components/TemplateEditor";
 
 const queryClient = new QueryClient();
 
@@ -27,8 +25,6 @@ const App = () => (
           <Route element={<SiteLayout />}>
             <Route index element={<Index />} />
             <Route path="parking-pass" element={<ParkingPassPage />} />
-            <Route path="documents" element={<DocumentPreview />} />
-            <Route path="templates" element={<TemplateEditor />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

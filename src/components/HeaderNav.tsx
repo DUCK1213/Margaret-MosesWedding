@@ -11,11 +11,8 @@ const navItems: NavAnchor[] = [
   { label: "Story", href: "#story", type: "anchor" },
   { label: "Details", href: "#details", type: "anchor" },
   { label: "Programme", href: "#programme", type: "anchor" },
-  { label: "Parking", href: "#parking", type: "anchor" },
   { label: "RSVP", href: "#rsvp", type: "anchor" },
-  { label: "Parking Pass", href: "/parking-pass", type: "route" },
-  { label: "Documents", href: "/documents", type: "route" },
-  { label: "Templates", href: "/templates", type: "route" },
+  { label: "Event Tags", href: "/parking-pass", type: "route" },
 ];
 
 const HeaderNav = () => {
@@ -97,7 +94,7 @@ const HeaderNav = () => {
                 {location.pathname !== "/parking-pass" && (
                   <Button asChild className="w-full bg-gold text-emerald font-serif text-base">
                     <Link to="/parking-pass" onClick={handleNavigate}>
-                      Download Parking Pass
+                      Download Event Tags
                     </Link>
                   </Button>
                 )}
