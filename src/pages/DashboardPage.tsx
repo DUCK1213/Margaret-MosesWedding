@@ -73,49 +73,47 @@ const DashboardPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald to-emerald-900 floral-pattern">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-blue-900 to-indigo-900 floral-pattern">
       {/* Decorative floral pattern overlay */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-64 h-64 border-l-2 border-t-2 border-gold rounded-tl-full" />
-        <div className="absolute top-0 right-0 w-64 h-64 border-r-2 border-t-2 border-gold rounded-tr-full" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 border-l-2 border-b-2 border-gold rounded-bl-full" />
-        <div className="absolute bottom-0 right-0 w-64 h-64 border-r-2 border-b-2 border-gold rounded-br-full" />
+        <div className="absolute top-0 left-0 w-64 h-64 border-l-2 border-t-2 border-blue-400 rounded-tl-full" />
+        <div className="absolute top-0 right-0 w-64 h-64 border-r-2 border-t-2 border-blue-400 rounded-tr-full" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 border-l-2 border-b-2 border-blue-400 rounded-bl-full" />
+        <div className="absolute bottom-0 right-0 w-64 h-64 border-r-2 border-b-2 border-blue-400 rounded-br-full" />
       </div>
 
       <div className="container mx-auto px-4 z-10 pt-28 pb-16">
         <div className="max-w-7xl mx-auto space-y-12 animate-fade-in">
           {/* Header Section */}
           <div className="text-center space-y-8">
-            <div className="inline-flex items-center gap-3 bg-gold/20 backdrop-blur-sm px-6 py-3 rounded-full border-2 border-gold">
-              <TrendingUp className="w-6 h-6 text-gold" />
-              <p className="font-serif text-sm uppercase tracking-[0.3em] text-gold">
+            <div className="inline-flex items-center gap-3 bg-blue-500/20 backdrop-blur-sm px-6 py-3 rounded-full border-2 border-blue-400">
+              <TrendingUp className="w-6 h-6 text-blue-300" />
+              <p className="font-serif text-sm uppercase tracking-[0.3em] text-blue-300">
                 Dashboard
               </p>
             </div>
             
             <div className="space-y-4">
-              <h1 className="font-script text-5xl sm:text-6xl md:text-7xl text-cream">
+              <h1 className="font-script text-5xl sm:text-6xl md:text-7xl text-white">
                 Wedding Analytics
               </h1>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-                <div className="hidden sm:block h-px w-16 bg-gold" />
-                <p className="font-serif text-lg sm:text-xl md:text-2xl text-cream italic max-w-2xl">
+                <div className="hidden sm:block h-px w-16 bg-blue-400" />
+                <p className="font-serif text-lg sm:text-xl md:text-2xl text-blue-200 italic max-w-2xl">
                   Real-time insights into your wedding planning
                 </p>
-                <div className="hidden sm:block h-px w-16 bg-gold" />
+                <div className="hidden sm:block h-px w-16 bg-blue-400" />
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link 
                 to="/" 
-                className="inline-flex items-center gap-2 px-6 py-3 bg-cream/20 backdrop-blur-sm text-cream hover:bg-cream/30 border-2 border-cream rounded-lg transition-all hover:scale-105"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border-2 border-white rounded-lg transition-all hover:scale-105"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
-                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-
-2z"/>
-Hanle
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                   <polyline points="9,22 9,12 15,12 15,22"/>
                 </svg>
                 Back to Home
@@ -126,7 +124,7 @@ Hanle
           {/* Stats Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Total RSVPs */}
-            <div className="bg-cream/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-gold/20">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-blue-400/20">
               <div className="flex items-center justify-between mb-4">
                 <Users className="w-8 h-8 text-gold" />
                 <span className="text-sm font-serif text-emerald-600">Total</span>
@@ -136,7 +134,7 @@ Hanle
             </div>
 
             {/* Attending */}
-            <div className="bg-cream/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-gold/20">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-blue-400/20">
               <div className="flex items-center justify-between mb-4">
                 <CheckCircle className="w-8 h-8 text-green-600" />
                 <span className="text-sm font-serif text-emerald-600">Confirmed</span>
@@ -149,7 +147,7 @@ Hanle
             </div>
 
             {/* Not Attending */}
-            <div className="bg-cream/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-gold/20">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-blue-400/20">
               <div className="flex items-center justify-between mb-4">
                 <XCircle className="w-8 h-8 text-red-600" />
                 <span className="text-sm font-serif text-emerald-600">Declined</span>
@@ -159,7 +157,7 @@ Hanle
             </div>
 
             {/* Total Guests */}
-            <div className="bg-cream/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-gold/20">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-blue-400/20">
               <div className="flex items-center justify-between mb-4">
                 <Heart className="w-8 h-8 text-gold" />
                 <span className="text-sm font-serif text-emerald-600">Guests</span>
@@ -171,7 +169,7 @@ Hanle
 
           {/* Event Pass Stats */}
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-cream/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-gold/20">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-blue-400/20">
               <div className="flex items-center justify-between mb-4">
                 <Car className="w-8 h-8 text-gold" />
                 <span className="text-sm font-serif text-emerald-600">Parking</span>
@@ -180,7 +178,7 @@ Hanle
               <p className="font-serif text-emerald-600">Parking Passes Generated</p>
             </div>
 
-            <div className="bg-cream/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-gold/20">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-6 border-2 border-blue-400/20">
               <div className="flex items-center justify-between mb-4">
                 <Users className="w-8 h-8 text-gold" />
                 <span className="text-sm font-serif text-emerald-600">Volunteers</span>
@@ -191,7 +189,7 @@ Hanle
           </div>
 
           {/* Recent RSVPs */}
-          <div className="bg-cream/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-2 border-gold/20">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-2 border-blue-400/20">
             <h3 className="font-script text-3xl text-emerald-800 mb-6">Recent RSVPs</h3>
             
             {recentRSVPs.length > 0 ? (
@@ -245,7 +243,7 @@ Hanle
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-cream/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-2 border-gold/20">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-8 border-2 border-blue-400/20">
             <h3 className="font-script text-3xl text-emerald-800 mb-6">Quick Actions</h3>
             
             <div className="grid md:grid-cols-3 gap-4">
