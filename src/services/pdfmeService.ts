@@ -24,26 +24,26 @@ export class PDFMeService {
     try {
       const inputs = [
         {
+          title: 'PARKING PASS',
+          nameLabel: 'Name:',
           name: data.name,
+          plateLabel: 'Plate Number:',
           plateNumber: data.plateNumber,
+          passNumberLabel: 'Pass #:',
           passNumber: data.passNumber,
+          dateLabel: 'Event Date:',
           eventDate: data.eventDate,
+          locationLabel: 'Location:',
           eventLocation: data.eventLocation,
-          barcode: `PASS-${data.passNumber}-${data.plateNumber.replace(/\s+/g, '')}`
+          scanLabel: 'Scan for verification:',
+          barcode: `PASS-${data.passNumber}-${data.plateNumber.replace(/\s+/g, '')}`,
+          footer: 'This pass must be displayed on the dashboard of the vehicle. Unauthorized vehicles will be towed at owner\'s expense.'
         }
       ];
 
       const pdf = await generate({
         template: parkingPassTemplate,
-        inputs,
-        options: {
-          font: {
-            defaultFont: {
-              data: new ArrayBuffer(0), // Will use default font
-              fallback: true
-            }
-          }
-        }
+        inputs
       });
 
       return pdf;
@@ -57,27 +57,27 @@ export class PDFMeService {
     try {
       const inputs = [
         {
-          name: data.name,
-          role: data.role,
-          idNumber: data.idNumber,
+          title: 'VOLUNTEER',
           eventName: data.eventName,
+          photoPlaceholder: '[PHOTO]',
+          nameLabel: 'Name:',
+          name: data.name,
+          roleLabel: 'Role:',
+          role: data.role,
+          idLabel: 'ID #:',
+          idNumber: data.idNumber,
+          dateLabel: 'Date:',
           eventDate: data.eventDate,
+          emergencyLabel: 'Emergency:',
           emergencyContact: data.emergencyContact,
-          barcode: `VOL-${data.idNumber}-${data.name.substring(0, 3).toUpperCase()}`
+          barcode: `VOL-${data.idNumber}-${data.name.substring(0, 3).toUpperCase()}`,
+          footer: 'This tag must be worn and visible at all times during the event.'
         }
       ];
 
       const pdf = await generate({
         template: volunteerTagTemplate,
-        inputs,
-        options: {
-          font: {
-            defaultFont: {
-              data: new ArrayBuffer(0), // Will use default font
-              fallback: true
-            }
-          }
-        }
+        inputs
       });
 
       return pdf;

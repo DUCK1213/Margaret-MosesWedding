@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { PDFPreview } from '@/utils/pdfUtils';
-import ParkingPass from './pdf/ParkingPass';
-import VolunteerTag from './pdf/VolunteerTag';
+import { PDFMeService } from '@/services/pdfmeService';
 import { Button } from '@/components/ui/button';
 import { Download, Eye } from 'lucide-react';
 
@@ -24,6 +22,24 @@ const DocumentPreview: React.FC = () => {
     eventName: 'Margaret & Moses Wedding',
     eventDate: 'December 12, 2025',
     emergencyContact: 'John (555-0123)'
+  };
+
+  const handleDownloadParkingPass = async () => {
+    try {
+      await PDFMeService.generateAndDownloadParkingPass(sampleParkingPass);
+    } catch (error) {
+      console.error('Error downloading parking pass:', error);
+      alert('Failed to download parking pass');
+    }
+  };
+
+  const handleDownloadVolunteerTag = async () => {
+    try {
+      await PDFMeService.generateAndDownloadVolunteerTag(sampleVolunteerTag);
+    } catch (error) {
+      console.error('Error downloading volunteer tag:', error);
+      alert('Failed to download volunteer tag');
+    }
   };
 
   return (
@@ -59,34 +75,90 @@ const DocumentPreview: React.FC = () => {
         {/* Document Preview */}
         <div>
           <h2 className="text-xl font-semibold text-gray-800 mb-4">Preview</h2>
-          <div className="border rounded-lg overflow-hidden bg-gray-50">
+          <div className="border rounded-lg overflow-hidden bg-gray-50 p-8">
             {activeDocument === 'parking' ? (
-              <PDFPreview
-                pdfDocument={
-                  <ParkingPass
-                    name={sampleParkingPass.name}
-                    plateNumber={sampleParkingPass.plateNumber}
-                    passNumber={sampleParkingPass.passNumber}
-                    eventDate={sampleParkingPass.eventDate}
-                    eventLocation={sampleParkingPass.eventLocation}
-                  />
-                }
-                height="400px"
-              />
+              <div className="bg-white p-6 rounded shadow-sm">
+                <div className="text-center mb-4">
+                  <div className="text-lg font-bold text-green-700 border-b-2 border-yellow-400 pb-2">
+                    PARKING PASS
+                  </div>
+                </div>
+                <div className="space-y-2 text-sm">
+                  <div className="flex">
+                    <span className="font-bold w-24">Name:</span>
+                    <span>{sampleParkingPass.name}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-bold w-24">Plate Number:</span>
+                    <span>{sampleParkingPass.plateNumber}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-bold w-24">Pass #:</span>
+                    <span>{sampleParkingPass.passNumber}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-bold w-24">Event Date:</span>
+                    <span>{sampleParkingPass.eventDate}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-bold w-24">Location:</span>
+                    <span>{sampleParkingPass.eventLocation}</span>
+                  </div>
+                </div>
+                <div className="mt-4 text-center">
+                  <div className="text-xs text-gray-600 mb-2">Scan for verification:</div>
+                  <div className="bg-gray-200 p-2 text-xs font-mono">
+                    PASS-{sampleParkingPass.passNumber}-{sampleParkingPass.plateNumber.replace(/\s+/g, '')}
+                  </div>
+                </div>
+                <div className="mt-4 text-xs text-gray-600 text-center">
+                  This pass must be displayed on the dashboard of the vehicle. Unauthorized vehicles will be towed at owner's expense.
+                </div>
+              </div>
             ) : (
-              <PDFPreview
-                pdfDocument={
-                  <VolunteerTag
-                    name={sampleVolunteerTag.name}
-                    role={sampleVolunteerTag.role}
-                    idNumber={sampleVolunteerTag.idNumber}
-                    eventName={sampleVolunteerTag.eventName}
-                    eventDate={sampleVolunteerTag.eventDate}
-                    emergencyContact={sampleVolunteerTag.emergencyContact}
-                  />
-                }
-                height="400px"
-              />
+              <div className="bg-white p-6 rounded shadow-sm">
+                <div className="text-center mb-4">
+                  <div className="text-lg font-bold text-green-700 border-b-2 border-yellow-400 pb-2">
+                    VOLUNTEER
+                  </div>
+                  <div className="text-sm text-green-700 mt-1">{sampleVolunteerTag.eventName}</div>
+                </div>
+                <div className="flex justify-center mb-4">
+                  <div className="bg-gray-200 w-16 h-16 flex items-center justify-center text-xs">
+                    PHOTO
+                  </div>
+                </div>
+                <div className="space-y-2 text-sm">
+                  <div className="flex">
+                    <span className="font-bold w-24">Name:</span>
+                    <span>{sampleVolunteerTag.name}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-bold w-24">Role:</span>
+                    <span>{sampleVolunteerTag.role}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-bold w-24">ID #:</span>
+                    <span>{sampleVolunteerTag.idNumber}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-bold w-24">Date:</span>
+                    <span>{sampleVolunteerTag.eventDate}</span>
+                  </div>
+                  <div className="flex">
+                    <span className="font-bold w-24">Emergency:</span>
+                    <span>{sampleVolunteerTag.emergencyContact}</span>
+                  </div>
+                </div>
+                <div className="mt-4 text-center">
+                  <div className="bg-gray-200 p-2 text-xs font-mono">
+                    VOL-{sampleVolunteerTag.idNumber}-{sampleVolunteerTag.name.substring(0, 3).toUpperCase()}
+                  </div>
+                </div>
+                <div className="mt-4 text-xs text-gray-600 text-center">
+                  This tag must be worn and visible at all times during the event.
+                </div>
+              </div>
             )}
           </div>
         </div>
@@ -172,11 +244,11 @@ const DocumentPreview: React.FC = () => {
       {/* Action Buttons */}
       <div className="mt-8 flex justify-center space-x-4">
         <Button
-          onClick={() => window.print()}
-          className="bg-gray-600 hover:bg-gray-700 text-white"
+          onClick={activeDocument === 'parking' ? handleDownloadParkingPass : handleDownloadVolunteerTag}
+          className="bg-emerald-600 hover:bg-emerald-700 text-white"
         >
           <Download className="h-4 w-4 mr-2" />
-          Print Preview
+          Download PDF
         </Button>
       </div>
     </div>
