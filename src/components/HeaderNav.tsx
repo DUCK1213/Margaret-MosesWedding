@@ -13,6 +13,7 @@ const navItems: NavAnchor[] = [
   { label: "Programme", href: "/programme", type: "route" },
   { label: "RSVP", href: "/rsvp", type: "route" },
   { label: "Event Tags", href: "/parking-pass", type: "route" },
+  { label: "Dashboard", href: "/dashboard", type: "route" },
 ];
 
 const HeaderNav = () => {
@@ -57,8 +58,12 @@ const HeaderNav = () => {
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-6 text-cream font-serif text-sm tracking-[0.2em] uppercase">
           {navItems.map((item) =>
-            item.label === "Parking Pass" ? (
+            item.label === "Event Tags" ? (
               <Button asChild key={item.label} className="bg-gold text-emerald font-serif tracking-[0.2em]">
+                {renderLink(item)}
+              </Button>
+            ) : item.label === "Dashboard" ? (
+              <Button asChild key={item.label} className="bg-emerald/80 text-gold font-serif tracking-[0.2em] border border-gold/50">
                 {renderLink(item)}
               </Button>
             ) : (
@@ -98,11 +103,6 @@ const HeaderNav = () => {
                     </Link>
                   </Button>
                 )}
-                <Button asChild className="w-full bg-emerald/80 text-gold font-serif text-base border border-gold/50">
-                  <Link to="/dashboard" onClick={handleNavigate}>
-                    View Dashboard
-                  </Link>
-                </Button>
               </div>
             </SheetContent>
           </Sheet>
