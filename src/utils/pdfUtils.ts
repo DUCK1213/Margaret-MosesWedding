@@ -11,7 +11,7 @@ interface PDFDocumentProps {
 }
 
 interface PDFDownloadButtonProps {
-  document: ReactElement;
+  pdfDocument: ReactElement;
   fileName: string;
   buttonText?: string;
   className?: string;
@@ -19,56 +19,62 @@ interface PDFDownloadButtonProps {
 }
 
 export const PDFDownloadButton: React.FC<PDFDownloadButtonProps> = ({
-  document,
+  pdfDocument,
   fileName,
   buttonText = 'Download PDF',
   className = '',
   children,
 }) => {
-  return (
-    <PDFDownloadLink
-      document={document}
-      fileName={`${fileName.replace(/\s+/g, '_')}.pdf`}
-      className="inline-block"
-    >
-      {({ loading }: { loading: boolean }) => (
-        <Button className={`gap-2 ${className}`} disabled={loading}>
-          <Download className="h-4 w-4" />
-          {children || (loading ? 'Generating...' : buttonText)}
-        </Button>
-      )}
-    </PDFDownloadLink>
+  return React.createElement(
+    PDFDownloadLink,
+    {
+      document: pdfDocument,
+      fileName: `${fileName.replace(/\s+/g, '_')}.pdf`,
+      className: "inline-block"
+    },
+    ({ loading }: { loading: boolean }) => 
+      React.createElement(
+        Button,
+        { className: `gap-2 ${className}`, disabled: loading },
+        React.createElement(Download, { className: "h-4 w-4" }),
+        children || (loading ? 'Generating...' : buttonText)
+      )
   );
 };
 
 interface PDFPreviewProps {
-  document: ReactElement;
+  pdfDocument: ReactElement;
   width?: string | number;
   height?: string | number;
   className?: string;
 }
 
 export const PDFPreview: React.FC<PDFPreviewProps> = ({
-  document,
+  pdfDocument,
   width = '100%',
   height = '600px',
   className = '',
 }) => {
-  return (
-    <div className={`w-full border rounded-lg overflow-hidden ${className}`} style={{ height }}>
-      <PDFViewer width="100%" height="100%" style={{ border: 'none' }}>
-        {document}
-      </PDFViewer>
-    </div>
+  return React.createElement(
+    'div',
+    { 
+      className: `w-full border rounded-lg overflow-hidden ${className}`, 
+      style: { height } 
+    },
+    React.createElement(
+      PDFViewer,
+      { width: '100%', height: '100%', style: { border: 'none' } },
+      pdfDocument
+    )
   );
 };
 
 export const generateAndDownloadPDF = async (
-  document: ReactElement,
+  pdfDocument: ReactElement,
   fileName: string
 ): Promise<void> => {
   const { pdf } = await import('@react-pdf/renderer');
-  const blob = await pdf(document).toBlob();
+  const blob = await pdf(pdfDocument).toBlob();
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;

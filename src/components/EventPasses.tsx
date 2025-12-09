@@ -163,7 +163,7 @@ const EventPasses: React.FC = () => {
 
                 <div className="flex justify-end">
                   <PDFDownloadButton
-                    document={
+                    pdfDocument={
                       <ParkingPass
                         name={pass.name || 'Guest'}
                         plateNumber={pass.plateNumber || 'Not Specified'}
@@ -261,7 +261,7 @@ const EventPasses: React.FC = () => {
 
                 <div className="flex justify-end">
                   <PDFDownloadButton
-                    document={
+                    pdfDocument={
                       <VolunteerTag
                         name={tag.name || 'Volunteer'}
                         role={tag.role}
