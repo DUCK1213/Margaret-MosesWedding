@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Clock, Music, Utensils, Camera, Heart, Sparkles, PartyPopper, Church, Car, Gift, Cake, Wine, Moon, Sun, Users, Mic2, ChevronDown, ChevronUp } from "lucide-react";
+import { useState, useRef } from "react";
+import { Clock, Music, Utensils, Camera, Heart, Sparkles, PartyPopper, Church, Car, Gift, Cake, Moon, Sun, Users, Mic2, ChevronDown, Download, Printer } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 type EventItem = {
   time: string;
@@ -21,6 +22,169 @@ type ProgrammePart = {
 const EventProgramme = () => {
   const [expandedParts, setExpandedParts] = useState<Set<string>>(new Set(["part1", "part2"]));
   const [activeEvent, setActiveEvent] = useState<string | null>(null);
+  const programmeRef = useRef<HTMLDivElement>(null);
+
+  const openPrintWindow = () => {
+    const styles = Array.from(document.querySelectorAll("style, link[rel='stylesheet']"))
+      .map((node) => node.outerHTML)
+      .join("");
+
+    const printWindow = window.open("", "_blank", "width=900,height=700");
+    if (!printWindow) {
+      alert("Unable to open print preview. Please allow pop-ups and try again.");
+      return;
+    }
+
+    // Generate print-friendly HTML
+    const printContent = `
+      <html>
+        <head>
+          <title>Wedding Programme - Margaret & Moses</title>
+          ${styles}
+          <style>
+            @page { size: A4 portrait; margin: 15mm; }
+            @media print {
+              body { 
+                margin: 0; 
+                padding: 0; 
+                background: #f5f0ea !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+              }
+              .print-container {
+                max-width: 100%;
+                padding: 20px;
+              }
+              .print-header {
+                text-align: center;
+                margin-bottom: 30px;
+                border-bottom: 2px solid #c9a959;
+                padding-bottom: 20px;
+              }
+              .print-title {
+                font-family: 'Great Vibes', cursive;
+                font-size: 36px;
+                color: #1a5d4c;
+                margin-bottom: 10px;
+              }
+              .print-subtitle {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 16px;
+                color: #2d7a68;
+              }
+              .print-part {
+                margin-bottom: 25px;
+                page-break-inside: avoid;
+              }
+              .print-part-header {
+                background: linear-gradient(135deg, #1a5d4c, #2d7a68);
+                color: #c9a959;
+                padding: 12px 20px;
+                border-radius: 8px;
+                margin-bottom: 15px;
+              }
+              .print-part-title {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 18px;
+                font-weight: bold;
+                margin: 0;
+              }
+              .print-part-subtitle {
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 12px;
+                opacity: 0.8;
+                margin: 0;
+              }
+              .print-event {
+                display: flex;
+                gap: 15px;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(201, 169, 89, 0.2);
+              }
+              .print-event:last-child {
+                border-bottom: none;
+              }
+              .print-time {
+                font-family: 'Cormorant Garamond', serif;
+                font-weight: bold;
+                color: #c9a959;
+                min-width: 80px;
+                font-size: 14px;
+              }
+              .print-event-content {
+                flex: 1;
+              }
+              .print-event-title {
+                font-family: 'Cormorant Garamond', serif;
+                font-weight: bold;
+                color: #1a5d4c;
+                font-size: 14px;
+                margin-bottom: 4px;
+              }
+              .print-event-desc {
+                font-family: 'Cormorant Garamond', serif;
+                color: #2d7a68;
+                font-size: 12px;
+              }
+              .print-footer {
+                text-align: center;
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid rgba(201, 169, 89, 0.3);
+              }
+              .print-quote {
+                font-family: 'Cormorant Garamond', serif;
+                font-style: italic;
+                color: #2d7a68;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="print-container">
+            <div class="print-header">
+              <div class="print-title">Margaret & Moses</div>
+              <div class="print-subtitle">Wedding Programme</div>
+              <div class="print-subtitle">Friday, December 12, 2025 • Elegant Green & Gold</div>
+            </div>
+            ${programmeParts.map((part, index) => `
+              <div class="print-part">
+                <div class="print-part-header">
+                  <p class="print-part-title">Part ${index + 1}: ${part.title}</p>
+                  <p class="print-part-subtitle">${part.subtitle} • ${part.timeRange}</p>
+                </div>
+                ${part.events.map(event => `
+                  <div class="print-event">
+                    <div class="print-time">${event.time}</div>
+                    <div class="print-event-content">
+                      <div class="print-event-title">${event.event}</div>
+                      <div class="print-event-desc">${event.description}</div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `).join('')}
+            <div class="print-footer">
+              <p class="print-quote">"Two hearts, one love, forever begins"</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+
+    printWindow.document.write(printContent);
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+  };
+
+  const handlePrint = () => {
+    openPrintWindow();
+  };
+
+  const handleDownload = () => {
+    openPrintWindow();
+  };
 
   const programmeParts: ProgrammePart[] = [
     {
@@ -135,7 +299,7 @@ const EventProgramme = () => {
           </p>
 
           {/* Controls */}
-          <div className="flex justify-center gap-4 mt-6">
+          <div className="flex flex-wrap justify-center gap-3 mt-6">
             <button
               onClick={expandAll}
               className="px-4 py-2 text-sm font-serif text-gold border border-gold/30 rounded-full hover:bg-gold/10 transition-colors duration-300"
@@ -148,6 +312,21 @@ const EventProgramme = () => {
             >
               Collapse All
             </button>
+            <Button
+              onClick={handleDownload}
+              className="bg-gold hover:bg-gold/80 text-emerald-dark font-serif flex items-center gap-2 rounded-full"
+            >
+              <Download className="w-4 h-4" />
+              Save as PDF
+            </Button>
+            <Button
+              onClick={handlePrint}
+              variant="outline"
+              className="border-gold/50 text-gold hover:bg-gold/10 font-serif flex items-center gap-2 rounded-full"
+            >
+              <Printer className="w-4 h-4" />
+              Print
+            </Button>
           </div>
         </div>
 
