@@ -10,8 +10,8 @@ const navItems: NavAnchor[] = [
   { label: "Home", href: "#hero", type: "anchor" },
   { label: "Story", href: "#story", type: "anchor" },
   { label: "Details", href: "#details", type: "anchor" },
-  { label: "Programme", href: "#programme", type: "anchor" },
-  { label: "RSVP", href: "#rsvp", type: "anchor" },
+  { label: "Programme", href: "/programme", type: "route" },
+  { label: "RSVP", href: "/rsvp", type: "route" },
   { label: "Event Tags", href: "/parking-pass", type: "route" },
 ];
 
@@ -98,6 +98,11 @@ const HeaderNav = () => {
                     </Link>
                   </Button>
                 )}
+                <Button asChild className="w-full bg-emerald/80 text-gold font-serif text-base border border-gold/50">
+                  <Link to="/dashboard" onClick={handleNavigate}>
+                    View Dashboard
+                  </Link>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>

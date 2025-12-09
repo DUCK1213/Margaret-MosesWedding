@@ -85,6 +85,21 @@ const EventPasses: React.FC = () => {
         eventDate: 'December 12, 2025',
         eventLocation: 'Homeland Ruiru Resort'
       });
+
+      // Log the parking pass generation
+      await fetch("/.netlify/functions/parking-log", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "parking-pass",
+          name: pass.name || 'Guest',
+          plateNumber: pass.plateNumber || 'Not Specified',
+          passNumber: pass.passNumber,
+          generatedAt: new Date().toISOString()
+        }),
+      });
     } catch (error) {
       console.error('Error downloading parking pass:', error);
       alert('Failed to download parking pass');
@@ -100,6 +115,21 @@ const EventPasses: React.FC = () => {
         eventName: 'Margaret & Moses Wedding',
         eventDate: 'December 12, 2025',
         emergencyContact: tag.emergencyContact || 'Not specified'
+      });
+
+      // Log the volunteer tag generation
+      await fetch("/.netlify/functions/parking-log", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "volunteer-tag",
+          name: tag.name || 'Volunteer',
+          role: tag.role,
+          idNumber: tag.idNumber,
+          generatedAt: new Date().toISOString()
+        }),
       });
     } catch (error) {
       console.error('Error downloading volunteer tag:', error);
