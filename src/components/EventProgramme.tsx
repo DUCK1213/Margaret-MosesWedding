@@ -190,42 +190,42 @@ const EventProgramme = () => {
             <p style="color: #5d4037; font-style: italic; margin-bottom: 15px;">The Procession</p>
             
             <div class="event">
-              <div class="time">6:00 AM</div>
-              <div class="event-details">
-                <div class="event-title">Wake Up & Devotion</div>
-                <div class="event-description">Bride and Groom teams begin with prayers at separate locations</div>
-              </div>
-            </div>
-            
-            <div class="event">
-              <div class="time">7:00 AM</div>
+              <div class="time">6:00 - 7:00 AM</div>
               <div class="event-details">
                 <div class="event-title">Glam & Dressing</div>
-                <div class="event-description">Hair, makeup, grooming. Photographer arrives for 'Getting Ready' shots</div>
+                <div class="event-description">BTS & Bride and Groom Promises • Car Decoration • Breakfast</div>
               </div>
             </div>
             
             <div class="event">
-              <div class="time">7:45 AM</div>
+              <div class="time">7:00 - 8:00 AM</div>
               <div class="event-details">
-                <div class="event-title">Groom's Convoy Departs</div>
-                <div class="event-description">Moses and team leave to pick up the bride</div>
+                <div class="event-title">Dressing & Photo Session</div>
+                <div class="event-description">Final touches and 'Getting Ready' photography</div>
               </div>
             </div>
             
             <div class="event">
-              <div class="time">8:15 AM</div>
+              <div class="time">8:00 - 9:00 AM</div>
               <div class="event-details">
-                <div class="event-title">The Pick-Up (Kutoa Bibi)</div>
-                <div class="event-description">Negotiation, first look, parents' blessings</div>
+                <div class="event-title">Pick Up of Bride (Kutoa Bride)</div>
+                <div class="event-description">Groom's team leaves for church • Guests arrival and settle</div>
               </div>
             </div>
             
             <div class="event">
-              <div class="time">8:45 AM</div>
+              <div class="time">9:00 - 10:00 AM</div>
               <div class="event-details">
-                <div class="event-title">Bridal Convoy Departure</div>
-                <div class="event-description">Convoy heads to St. Michael & All Angels, Ruiru Town</div>
+                <div class="event-title">Bridal Convoy Arrival</div>
+                <div class="event-description">Arrival at the church</div>
+              </div>
+            </div>
+            
+            <div class="event">
+              <div class="time">10:00 - 11:30 AM</div>
+              <div class="event-details">
+                <div class="event-title">Bridal Procession & Church Service</div>
+                <div class="event-description">The Wedding Ceremony</div>
               </div>
             </div>
           </div>
@@ -305,22 +305,38 @@ const EventProgramme = () => {
 
           <!-- Part 3: Photo Session -->
           <div class="schedule-section">
-            <h3 class="section-title">Part 3: Photo Session</h3>
-            <p class="event-location">11:30 AM – 1:30 PM</p>
+            <h3 class="section-title">Part 3: Photo Session & Transition</h3>
+            <p class="event-location">11:30 AM – 2:00 PM</p>
             
             <div class="event">
-              <div class="time">11:30 AM</div>
+              <div class="time">11:30 AM - 12:00 PM</div>
               <div class="event-details">
-                <div class="event-title">Official Photo Shoot</div>
-                <div class="event-description">Bridal party heads to photo site</div>
+                <div class="event-title">Photo Session at Church Steps</div>
+                <div class="event-description">Official photos at the church</div>
               </div>
             </div>
             
             <div class="event">
-              <div class="time">11:30 AM</div>
+              <div class="time">12:00 - 12:30 PM</div>
               <div class="event-details">
-                <div class="event-title">Guests Arrive at Venue</div>
-                <div class="event-description">Refreshments and music at Homeland Resort</div>
+                <div class="event-title">Photo Session at Windsor</div>
+                <div class="event-description">Bridal party photos at scenic location</div>
+              </div>
+            </div>
+            
+            <div class="event">
+              <div class="time">12:00 PM</div>
+              <div class="event-details">
+                <div class="event-title">Guests Proceed to Reception</div>
+                <div class="event-description">Guests head to Homeland Leisure Garden</div>
+              </div>
+            </div>
+            
+            <div class="event">
+              <div class="time">12:30 - 2:00 PM</div>
+              <div class="event-details">
+                <div class="event-title">Lunch is Served</div>
+                <div class="event-description">Entertainment with Mugithi music</div>
               </div>
             </div>
           </div>
@@ -328,54 +344,36 @@ const EventProgramme = () => {
           <!-- Part 4: The Reception -->
           <div class="schedule-section">
             <h3 class="section-title">Part 4: The Reception</h3>
-            <p class="event-location">Homeland Ruiru Resort</p>
+            <p class="event-location">Homeland Leisure Garden</p>
             
             <div class="event">
-              <div class="time">1:30 PM</div>
+              <div class="time">2:00 - 3:00 PM</div>
               <div class="event-details">
-                <div class="event-title">Lunch is Served</div>
-                <div class="event-description">Guests enjoy buffet while bridal party finishes photos</div>
+                <div class="event-title">Bridal Team's Grand Arrival</div>
+                <div class="event-description">Brief photo session • Entertainment</div>
               </div>
             </div>
             
             <div class="event">
-              <div class="time">2:30 PM</div>
+              <div class="time">3:00 - 4:00 PM</div>
               <div class="event-details">
-                <div class="event-title">Grand Entrance</div>
-                <div class="event-description">MC hypes crowd, bridal party enters dancing</div>
+                <div class="event-title">Speeches</div>
+                <div class="event-description">Speeches from bride and groom parents • Presentation of gifts</div>
               </div>
             </div>
             
             <div class="event">
-              <div class="time">3:00 PM</div>
+              <div class="time">4:00 - 5:00 PM</div>
               <div class="event-details">
-                <div class="event-title">Entertainment & Speeches</div>
-                <div class="event-description">DJ, dancers, speeches from friends and parents</div>
+                <div class="event-title">Cake Cutting & Champagne Toss</div>
+                <div class="event-description">Vote of Thanks - Rachel Mukuna • Bouquet Toss</div>
               </div>
             </div>
             
-            <div class="event">
-              <div class="time">4:00 PM</div>
-              <div class="event-details">
-                <div class="event-title">Gift Presentation</div>
-                <div class="event-description">Guests and family present gifts</div>
-              </div>
-            </div>
-            
-            <div class="event">
-              <div class="time">4:30 PM</div>
-              <div class="event-details">
-                <div class="event-title">Cake Cutting & Toast</div>
-                <div class="event-description">Cutting cake, sharing with parents, champagne toasts</div>
-              </div>
-            </div>
-            
-            <div class="event">
-              <div class="time">5:30 PM</div>
-              <div class="event-details">
-                <div class="event-title">Vote of Thanks & Closing</div>
-                <div class="event-description">Thanks, closing prayer, bouquet toss</div>
-              </div>
+            <div style="background: linear-gradient(135deg, #f9f5f0, #e8f5e9); padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; border: 1px solid #d4af37;">
+              <p style="font-style: italic; color: #5d4037; font-size: 14px; line-height: 1.6;">
+                "Therefore what God has joined together, let no one separate."
+              </p>
             </div>
           </div>
 
@@ -475,11 +473,11 @@ const EventProgramme = () => {
           
           <div className="space-y-6 pl-2 border-l-2 border-amber-100 ml-3">
             {[
-              { time: '6:00 AM', title: 'Wake Up & Devotion', description: 'Bride and Groom teams begin with prayers at separate locations', icon: Sun },
-              { time: '7:00 AM', title: 'Glam & Dressing', description: 'Hair, makeup, grooming. Photographer arrives for \'Getting Ready\' shots', icon: Sparkles },
-              { time: '7:45 AM', title: 'Groom\'s Convoy Departs', description: 'Moses and team leave to pick up the bride', icon: Car },
-              { time: '8:15 AM', title: 'The Pick-Up (Kutoa Bibi)', description: 'Negotiation, first look, parents\' blessings', icon: Heart },
-              { time: '8:45 AM', title: 'Bridal Convoy Departure', description: 'Convoy heads to St. Michael & All Angels, Ruiru Town', icon: Car },
+              { time: '6:00 - 7:00 AM', title: 'Glam & Dressing', description: 'BTS & Bride and Groom Promises • Car Decoration • Breakfast', icon: Sparkles },
+              { time: '7:00 - 8:00 AM', title: 'Dressing & Photo Session', description: 'Final touches and \'Getting Ready\' photography', icon: Camera },
+              { time: '8:00 - 9:00 AM', title: 'Pick Up of Bride (Kutoa Bride)', description: 'Groom\'s team leaves for church • Guests arrival and settle', icon: Car },
+              { time: '9:00 - 10:00 AM', title: 'Bridal Convoy Arrival', description: 'Arrival at the church', icon: Car },
+              { time: '10:00 - 11:30 AM', title: 'Bridal Procession & Church Service', description: 'The Wedding Ceremony', icon: Church },
             ].map((item, idx) => (
               <div key={idx} className="flex items-start group">
                 <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1 group-hover:bg-amber-200 transition-colors">
@@ -626,18 +624,20 @@ const EventProgramme = () => {
           </div>
         </div>
 
-        {/* Part 3: Photo Session */}
+        {/* Part 3: Photo Session & Transition */}
         <div className="mb-10 print:mb-8 bg-gradient-to-r from-amber-50 to-white p-6 rounded-lg border-l-4 border-amber-400">
           <div className="flex items-center mb-4">
             <Camera className="h-6 w-6 text-amber-600 mr-2" />
-            <h3 className="text-xl font-semibold text-amber-800">Part 3: Photo Session</h3>
+            <h3 className="text-xl font-semibold text-amber-800">Part 3: Photo Session & Transition</h3>
           </div>
-          <p className="text-amber-700 mb-4">11:30 AM – 1:30 PM</p>
+          <p className="text-amber-700 mb-4">11:30 AM – 2:00 PM</p>
           
           <div className="space-y-6 pl-2 border-l-2 border-amber-100 ml-3">
             {[
-              { time: '11:30 AM', title: 'Official Photo Shoot', description: 'Bridal party heads to photo site', icon: Camera },
-              { time: '11:30 AM', title: 'Guests Arrive at Venue', description: 'Refreshments and music at Homeland Resort', icon: Users },
+              { time: '11:30 AM - 12:00 PM', title: 'Photo Session at Church Steps', description: 'Official photos at the church', icon: Camera },
+              { time: '12:00 - 12:30 PM', title: 'Photo Session at Windsor', description: 'Bridal party photos at scenic location', icon: Camera },
+              { time: '12:00 PM', title: 'Guests Proceed to Reception', description: 'Guests head to Homeland Leisure Garden', icon: Users },
+              { time: '12:30 - 2:00 PM', title: 'Lunch is Served', description: 'Entertainment with Mugithi music', icon: Utensils },
             ].map((item, idx) => (
               <div key={idx} className="flex items-start group">
                 <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1 group-hover:bg-amber-200 transition-colors">
@@ -659,16 +659,13 @@ const EventProgramme = () => {
             <PartyPopper className="h-6 w-6 text-emerald-600 mr-2" />
             <h3 className="text-xl font-semibold text-emerald-800">Part 4: The Reception</h3>
           </div>
-          <p className="text-emerald-700 mb-4">Homeland Ruiru Resort</p>
+          <p className="text-emerald-700 mb-4">Homeland Leisure Garden</p>
           
           <div className="space-y-6 pl-2 border-l-2 border-emerald-100 ml-3">
             {[
-              { time: '1:30 PM', title: 'Lunch is Served', description: 'Guests enjoy buffet while bridal party finishes photos', icon: Utensils },
-              { time: '2:30 PM', title: 'Grand Entrance', description: 'MC hypes crowd, bridal party enters dancing', icon: PartyPopper },
-              { time: '3:00 PM', title: 'Entertainment & Speeches', description: 'DJ, dancers, speeches from friends and parents', icon: Mic2 },
-              { time: '4:00 PM', title: 'Gift Presentation', description: 'Guests and family present gifts', icon: Gift },
-              { time: '4:30 PM', title: 'Cake Cutting & Toast', description: 'Cutting cake, sharing with parents, champagne toasts', icon: Cake },
-              { time: '5:30 PM', title: 'Vote of Thanks & Closing', description: 'Thanks, closing prayer, bouquet toss', icon: Heart },
+              { time: '2:00 - 3:00 PM', title: 'Bridal Team\'s Grand Arrival', description: 'Brief photo session • Entertainment', icon: PartyPopper },
+              { time: '3:00 - 4:00 PM', title: 'Speeches', description: 'Speeches from bride and groom parents • Presentation of gifts', icon: Mic2 },
+              { time: '4:00 - 5:00 PM', title: 'Cake Cutting & Champagne Toss', description: 'Vote of Thanks - Rachel Mukuna • Bouquet Toss', icon: Cake },
             ].map((item, idx) => (
               <div key={idx} className="flex items-start group">
                 <div className="bg-emerald-100 p-2 rounded-full mr-4 mt-1 group-hover:bg-emerald-200 transition-colors">
@@ -681,6 +678,13 @@ const EventProgramme = () => {
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Scripture Quote */}
+          <div className="mt-6 bg-gradient-to-r from-amber-50 to-emerald-50 p-4 rounded-lg border border-amber-200 text-center">
+            <p className="text-sm text-gray-700 italic leading-relaxed">
+              "Therefore what God has joined together, let no one separate."
+            </p>
           </div>
         </div>
 
