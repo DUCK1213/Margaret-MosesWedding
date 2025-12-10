@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Download, Car, User, Users, Plus, Trash2 } from 'lucide-react';
-import { PDFMeService } from '@/services/pdfmeService';
+import { Download, Car, Users, Plus, Trash2 } from 'lucide-react';
 
 const EventPasses: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'parking' | 'volunteer'>('parking');
@@ -77,63 +76,72 @@ const EventPasses: React.FC = () => {
   };
 
   const downloadParkingPass = async (pass: typeof parkingPasses[0]) => {
-    try {
-      await PDFMeService.generateAndDownloadParkingPass({
-        name: pass.name || 'Guest',
-        plateNumber: pass.plateNumber || 'Not Specified',
-        passNumber: pass.passNumber,
-        eventDate: 'December 12, 2025',
-        eventLocation: 'Homeland Ruiru Resort'
-      });
-
-      // Log the parking pass generation
-      await fetch("/.netlify/functions/parking-log", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          type: "parking-pass",
-          name: pass.name || 'Guest',
-          plateNumber: pass.plateNumber || 'Not Specified',
-          passNumber: pass.passNumber,
-          generatedAt: new Date().toISOString()
-        }),
-      });
-    } catch (error) {
-      console.error('Error downloading parking pass:', error);
-      alert('Failed to download parking pass');
+    // Simple print-based download
+    const printWindow = window.open('', '', 'width=400,height=600');
+    if (printWindow) {
+      printWindow.document.write(`
+        <html>
+        <head>
+          <title>Parking Pass - ${pass.name || 'Guest'}</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+            .pass { border: 2px solid #2e7d32; padding: 20px; max-width: 300px; margin: 0 auto; }
+            h1 { color: #2e7d32; font-size: 18px; }
+            .info { margin: 10px 0; }
+            .label { font-size: 12px; color: #666; }
+            .value { font-size: 16px; font-weight: bold; }
+          </style>
+        </head>
+        <body>
+          <div class="pass">
+            <h1>PARKING PASS</h1>
+            <p>Margaret & Moses Wedding</p>
+            <div class="info"><span class="label">Pass #</span><br/><span class="value">${pass.passNumber}</span></div>
+            <div class="info"><span class="label">Name</span><br/><span class="value">${pass.name || 'Guest'}</span></div>
+            <div class="info"><span class="label">Plate Number</span><br/><span class="value">${pass.plateNumber || 'Not Specified'}</span></div>
+            <div class="info"><span class="label">Date</span><br/><span class="value">December 12, 2025</span></div>
+            <div class="info"><span class="label">Venue</span><br/><span class="value">Homeland Ruiru Resort</span></div>
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+      setTimeout(() => printWindow.print(), 500);
     }
   };
 
-  const downloadVolunteerTag = async (tag: typeof volunteerTags[0]) => {
-    try {
-      await PDFMeService.generateAndDownloadVolunteerTag({
-        name: tag.name || 'Volunteer',
-        role: tag.role,
-        idNumber: tag.idNumber,
-        eventName: 'Margaret & Moses Wedding',
-        eventDate: 'December 12, 2025',
-        emergencyContact: tag.emergencyContact || 'Not specified'
-      });
-
-      // Log the volunteer tag generation
-      await fetch("/.netlify/functions/parking-log", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          type: "volunteer-tag",
-          name: tag.name || 'Volunteer',
-          role: tag.role,
-          idNumber: tag.idNumber,
-          generatedAt: new Date().toISOString()
-        }),
-      });
-    } catch (error) {
-      console.error('Error downloading volunteer tag:', error);
-      alert('Failed to download volunteer tag');
+  const downloadVolunteerTag = (tag: typeof volunteerTags[0]) => {
+    const printWindow = window.open('', '', 'width=400,height=600');
+    if (printWindow) {
+      printWindow.document.write(`
+        <html>
+        <head>
+          <title>Volunteer Tag - ${tag.name || 'Volunteer'}</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+            .tag { border: 2px solid #d4af37; padding: 20px; max-width: 300px; margin: 0 auto; }
+            h1 { color: #d4af37; font-size: 18px; }
+            .info { margin: 10px 0; }
+            .label { font-size: 12px; color: #666; }
+            .value { font-size: 16px; font-weight: bold; }
+            .role { background: #d4af37; color: white; padding: 5px 15px; display: inline-block; border-radius: 4px; }
+          </style>
+        </head>
+        <body>
+          <div class="tag">
+            <h1>VOLUNTEER</h1>
+            <p>Margaret & Moses Wedding</p>
+            <div class="info"><span class="role">${tag.role}</span></div>
+            <div class="info"><span class="label">ID</span><br/><span class="value">${tag.idNumber}</span></div>
+            <div class="info"><span class="label">Name</span><br/><span class="value">${tag.name || 'Volunteer'}</span></div>
+            <div class="info"><span class="label">Emergency Contact</span><br/><span class="value">${tag.emergencyContact || 'Not specified'}</span></div>
+            <div class="info"><span class="label">Date</span><br/><span class="value">December 12, 2025</span></div>
+          </div>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+      setTimeout(() => printWindow.print(), 500);
     }
   };
 

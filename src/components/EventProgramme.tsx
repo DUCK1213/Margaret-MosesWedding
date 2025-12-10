@@ -230,41 +230,76 @@ const EventProgramme = () => {
             </div>
           </div>
 
-          <!-- Part 2: Church Ceremony -->
-          <div class="schedule-section">
-            <h3 class="section-title">Part 2: Church Ceremony</h3>
-            <p class="event-location">St. Michael & All Angels, Ruiru</p>
+          <!-- Part 2: Church Wedding Programme -->
+          <div class="schedule-section" style="page-break-inside: avoid;">
+            <h3 class="section-title">Part 2: Church Wedding Programme</h3>
+            <p style="font-style: italic; color: #5d4037; margin-bottom: 5px;">For the Holy Matrimony of</p>
+            <p style="font-weight: 600; color: #2e7d32; font-size: 18px; margin-bottom: 10px;">MARGARET KOORI & MOSES MURITHI KAREMA</p>
+            <p class="event-location">ACK St. Michael and All Angels, Ruiru</p>
+            <p style="font-size: 13px; color: #5d4037; margin-bottom: 15px;">Officiating Minister: Revd. Fredrick Wambua</p>
             
-            <div class="event">
-              <div class="time">9:00 AM</div>
-              <div class="event-details">
-                <div class="event-title">Arrival & Seating</div>
-                <div class="event-description">Guests seated, Groom takes place at altar</div>
+            <div style="background: #f5f5f5; padding: 12px; border-radius: 6px; margin-bottom: 20px;">
+              <p style="font-weight: 600; color: #2e7d32; margin-bottom: 8px;">Bridal Team</p>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; font-size: 13px; color: #5d4037;">
+                <span>Bride: Margaret Koori</span>
+                <span>Groom: Moses Murithi Karema</span>
+                <span>Best Man: George Anthony Njau</span>
+                <span>Best Maid: Agnes Mumbi Muiruri</span>
               </div>
             </div>
-            
-            <div class="event">
-              <div class="time">9:15 AM</div>
-              <div class="event-details">
-                <div class="event-title">The Processional</div>
-                <div class="event-description">Bridal party entrance, Margaret walks down the aisle</div>
-              </div>
-            </div>
-            
-            <div class="event">
-              <div class="time">9:30 AM</div>
-              <div class="event-details">
-                <div class="event-title">The Service</div>
-                <div class="event-description">Prayers, Sermon, Vows, Rings, Certificate Signing</div>
-              </div>
-            </div>
-            
-            <div class="event">
-              <div class="time">11:00 AM</div>
-              <div class="event-details">
-                <div class="event-title">Recessional & Photos</div>
-                <div class="event-description">Couple exits, photos on church steps</div>
-              </div>
+
+            <p style="font-weight: 600; color: #d4af37; margin-bottom: 15px; border-bottom: 1px solid #e8f5e9; padding-bottom: 8px;">Order of Service</p>
+
+            <p style="font-weight: 600; color: #2e7d32; margin: 15px 0 10px 0;">Processional</p>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Entry of the Bridal Party</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Entry of the Bride</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Processional Hymn</div></div></div>
+
+            <p style="font-weight: 600; color: #2e7d32; margin: 15px 0 10px 0;">Introduction & Welcome</p>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Opening Sentence</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Introduction of the Couple</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Declaration of Purpose</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Opening Hymn</div><div class="event-description">Jamhuri Choir</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Opening Prayer</div><div class="event-description">By the Officiating Minister</div></div></div>
+
+            <p style="font-weight: 600; color: #2e7d32; margin: 15px 0 10px 0;">The Marriage Rite</p>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">The Charge</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">The Declarations</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Exchange of Vows</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Exchange of Rings</div><div class="event-description">Rockin' Years - Celine Dion (during certificate signing)</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Pronouncement of Marriage</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Blessing of the Couple</div></div></div>
+
+            <p style="font-weight: 600; color: #2e7d32; margin: 15px 0 10px 0;">Scripture Readings</p>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Old Testament: Genesis 2:18–24</div><div class="event-description">Reader: Andrew Mureithi</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">New Testament: 1 Corinthians 13:1–13</div><div class="event-description">Reader: Collins Mureithi</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Gospel Reading: John 2:1–11</div><div class="event-description">Reader: Twila Kuria</div></div></div>
+
+            <p style="font-weight: 600; color: #2e7d32; margin: 15px 0 10px 0;">Wedding Sermon</p>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Sermon</div><div class="event-description">By Revd. Fredrick Wambua</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Offering</div></div></div>
+
+            <p style="font-weight: 600; color: #2e7d32; margin: 15px 0 10px 0;">Signing & Presentation</p>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Signing of the Marriage Register</div><div class="event-description">Hymn: We wi wakwa na nie waku</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Presentation of the Married Couple</div><div class="event-description">All Sing: We wi nyama… — Mr. & Mrs. Moses Murithi Karema</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Prayers for the Couple & Their Families</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Thanksgiving Hymn</div><div class="event-description">Jamhuri Choir</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Notices & Appreciations</div></div></div>
+
+            <p style="font-weight: 600; color: #2e7d32; margin: 15px 0 10px 0;">Recessional</p>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">All Sing: Ishara by Alice Kimani</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Exit of the Newly Married Couple</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Exit of the Bridal Party</div></div></div>
+            <div class="event"><div class="time"></div><div class="event-details"><div class="event-title">Exit of the Congregation</div></div></div>
+
+            <div style="background: linear-gradient(135deg, #f9f5f0, #e8f5e9); padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; border: 1px solid #d4af37;">
+              <p style="font-weight: 600; color: #2e7d32; margin-bottom: 8px;">Blessing</p>
+              <p style="font-style: italic; color: #5d4037; font-size: 14px; line-height: 1.6;">
+                "May the Lord bless you and keep you;<br/>
+                May His face shine upon you and be gracious to you;<br/>
+                May He lift up His countenance upon you and give you peace."<br/>
+                <span style="font-size: 12px; color: #d4af37;">— Numbers 6:24–26</span>
+              </p>
             </div>
           </div>
 
@@ -460,32 +495,134 @@ const EventProgramme = () => {
           </div>
         </div>
 
-        {/* Part 2: Church Ceremony */}
+        {/* Part 2: Church Wedding Programme */}
         <div className="mb-10 print:mb-8 bg-gradient-to-r from-emerald-50 to-white p-6 rounded-lg border-l-4 border-emerald-500">
           <div className="flex items-center mb-4">
             <Church className="h-6 w-6 text-emerald-600 mr-2" />
-            <h3 className="text-xl font-semibold text-emerald-800">Part 2: Church Ceremony</h3>
+            <h3 className="text-xl font-semibold text-emerald-800">Part 2: Church Wedding Programme</h3>
           </div>
-          <p className="text-emerald-700 mb-4">St. Michael & All Angels, Ruiru</p>
+          <p className="text-sm text-gray-600 italic mb-1">For the Holy Matrimony of</p>
+          <p className="font-semibold text-emerald-800 text-lg mb-2">MARGARET KOORI & MOSES MURITHI KAREMA</p>
+          <p className="text-emerald-700 mb-1">ACK St. Michael and All Angels, Ruiru</p>
+          <p className="text-sm text-gray-600 mb-4">Officiating Minister: Revd. Fredrick Wambua</p>
           
-          <div className="space-y-6 pl-2 border-l-2 border-emerald-100 ml-3">
-            {[
-              { time: '9:00 AM', title: 'Arrival & Seating', description: 'Guests seated, Groom takes place at altar', icon: Users },
-              { time: '9:15 AM', title: 'The Processional', description: 'Bridal party entrance, Margaret walks down the aisle', icon: Heart },
-              { time: '9:30 AM', title: 'The Service', description: 'Prayers, Sermon, Vows, Rings, Certificate Signing', icon: Church },
-              { time: '11:00 AM', title: 'Recessional & Photos', description: 'Couple exits, photos on church steps', icon: Camera },
-            ].map((item, idx) => (
-              <div key={idx} className="flex items-start group">
-                <div className="bg-emerald-100 p-2 rounded-full mr-4 mt-1 group-hover:bg-emerald-200 transition-colors">
-                  <item.icon className="h-4 w-4 text-emerald-700" />
-                </div>
-                <div>
-                  <div className="font-medium text-emerald-700">{item.time}</div>
-                  <h4 className="font-semibold text-emerald-800">{item.title}</h4>
-                  <p className="text-gray-600 text-sm">{item.description}</p>
-                </div>
+          {/* Bridal Team */}
+          <div className="bg-amber-50 p-4 rounded-lg mb-6">
+            <p className="font-semibold text-emerald-800 mb-2">Bridal Team</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700">
+              <span><span className="font-medium">Bride:</span> Margaret Koori</span>
+              <span><span className="font-medium">Groom:</span> Moses Murithi Karema</span>
+              <span><span className="font-medium">Best Man:</span> George Anthony Njau</span>
+              <span><span className="font-medium">Best Maid:</span> Agnes Mumbi Muiruri</span>
+            </div>
+          </div>
+
+          {/* Order of Service */}
+          <p className="font-semibold text-amber-700 mb-4 pb-2 border-b border-emerald-100">Order of Service</p>
+          
+          <div className="space-y-4">
+            {/* Processional */}
+            <div>
+              <p className="font-semibold text-emerald-700 mb-2 flex items-center gap-2">
+                <Users className="h-4 w-4" /> Processional
+              </p>
+              <div className="pl-6 space-y-1 text-sm text-gray-700">
+                <p>• Entry of the Bridal Party</p>
+                <p>• Entry of the Bride</p>
+                <p>• Processional Hymn</p>
               </div>
-            ))}
+            </div>
+
+            {/* Introduction & Welcome */}
+            <div>
+              <p className="font-semibold text-emerald-700 mb-2 flex items-center gap-2">
+                <Mic2 className="h-4 w-4" /> Introduction & Welcome
+              </p>
+              <div className="pl-6 space-y-1 text-sm text-gray-700">
+                <p>• Opening Sentence</p>
+                <p>• Introduction of the Couple</p>
+                <p>• Declaration of Purpose</p>
+                <p>• Opening Hymn <span className="text-amber-600 italic">— Jamhuri Choir</span></p>
+                <p>• Opening Prayer <span className="text-amber-600 italic">— By the Officiating Minister</span></p>
+              </div>
+            </div>
+
+            {/* The Marriage Rite */}
+            <div>
+              <p className="font-semibold text-emerald-700 mb-2 flex items-center gap-2">
+                <Heart className="h-4 w-4" /> The Marriage Rite
+              </p>
+              <div className="pl-6 space-y-1 text-sm text-gray-700">
+                <p>• The Charge</p>
+                <p>• The Declarations</p>
+                <p>• Exchange of Vows</p>
+                <p>• Exchange of Rings <span className="text-amber-600 italic">— Rockin' Years - Celine Dion (cert signing)</span></p>
+                <p>• Pronouncement of Marriage</p>
+                <p>• Blessing of the Couple</p>
+              </div>
+            </div>
+
+            {/* Scripture Readings */}
+            <div>
+              <p className="font-semibold text-emerald-700 mb-2 flex items-center gap-2">
+                <Church className="h-4 w-4" /> Scripture Readings
+              </p>
+              <div className="pl-6 space-y-1 text-sm text-gray-700">
+                <p>• Old Testament: Genesis 2:18–24 <span className="text-amber-600 italic">— Andrew Mureithi</span></p>
+                <p>• New Testament: 1 Corinthians 13:1–13 <span className="text-amber-600 italic">— Collins Mureithi</span></p>
+                <p>• Gospel Reading: John 2:1–11 <span className="text-amber-600 italic">— Twila Kuria</span></p>
+              </div>
+            </div>
+
+            {/* Wedding Sermon */}
+            <div>
+              <p className="font-semibold text-emerald-700 mb-2 flex items-center gap-2">
+                <Mic2 className="h-4 w-4" /> Wedding Sermon
+              </p>
+              <div className="pl-6 space-y-1 text-sm text-gray-700">
+                <p>• Sermon <span className="text-amber-600 italic">— By Revd. Fredrick Wambua</span></p>
+                <p>• Offering</p>
+              </div>
+            </div>
+
+            {/* Signing & Presentation */}
+            <div>
+              <p className="font-semibold text-emerald-700 mb-2 flex items-center gap-2">
+                <Sparkles className="h-4 w-4" /> Signing & Presentation
+              </p>
+              <div className="pl-6 space-y-1 text-sm text-gray-700">
+                <p>• Signing of the Marriage Register <span className="text-amber-600 italic">— Hymn: We wi wakwa na nie waku</span></p>
+                <p>• Presentation of the Married Couple <span className="text-amber-600 italic">— All Sing: We wi nyama…</span></p>
+                <p className="font-medium text-emerald-800 pl-4">Mr. & Mrs. Moses Murithi Karema</p>
+                <p>• Prayers for the Couple & Their Families</p>
+                <p>• Thanksgiving Hymn <span className="text-amber-600 italic">— Jamhuri Choir</span></p>
+                <p>• Notices & Appreciations</p>
+              </div>
+            </div>
+
+            {/* Recessional */}
+            <div>
+              <p className="font-semibold text-emerald-700 mb-2 flex items-center gap-2">
+                <Music className="h-4 w-4" /> Recessional
+              </p>
+              <div className="pl-6 space-y-1 text-sm text-gray-700">
+                <p>• All Sing: Ishara by Alice Kimani</p>
+                <p>• Exit of the Newly Married Couple</p>
+                <p>• Exit of the Bridal Party</p>
+                <p>• Exit of the Congregation</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Blessing */}
+          <div className="mt-6 bg-gradient-to-r from-amber-50 to-emerald-50 p-4 rounded-lg border border-amber-200 text-center">
+            <p className="font-semibold text-emerald-800 mb-2">Blessing</p>
+            <p className="text-sm text-gray-700 italic leading-relaxed">
+              "May the Lord bless you and keep you;<br/>
+              May His face shine upon you and be gracious to you;<br/>
+              May He lift up His countenance upon you and give you peace."
+            </p>
+            <p className="text-xs text-amber-700 mt-2">— Numbers 6:24–26</p>
           </div>
         </div>
 
